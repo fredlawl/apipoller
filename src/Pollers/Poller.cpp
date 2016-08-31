@@ -14,7 +14,9 @@ bool APIPOLLER::Poller::run()
     return false;
 }
 
-void APIPOLLER::Poller::loop() {
+
+void APIPOLLER::Poller::loop()
+{
     while (true) {
         if (!testConnection()) {
             if (!reopenConnection())
