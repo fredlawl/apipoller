@@ -4,30 +4,30 @@
 #include "APIPoller.h"
 
 namespace APIPOLLER {
-    class CURLHandler;
+    class CurlHandler;
 }
 
-class APIPOLLER::CURLHandler
+class APIPOLLER::CurlHandler
 {
 public:
-    ~CURLHandler() {
+    ~CurlHandler() {
         if (instance != nullptr)
             delete instance;
     };
 
-    static CURLHandler* getInstance();
+    static CurlHandler* getInstance();
 
     bool init(CURLcode& curlCode);
     void destroy();
     bool isGloballyInitialized();
 
 private:
-    static CURLHandler* instance;
+    static CurlHandler* instance;
     bool globallyInitialized = false;
 
-    CURLHandler() { };
-    CURLHandler& operator=(const CURLHandler&) = delete;
-    CURLHandler(const CURLHandler&) = delete;
+    CurlHandler() { };
+    CurlHandler& operator=(const CurlHandler&) = delete;
+    CurlHandler(const CurlHandler&) = delete;
 
 };
 

@@ -1,18 +1,18 @@
-#include "../inc/CURLHandler.h"
+#include "../inc/CurlHandler.h"
 
-APIPOLLER::CURLHandler* APIPOLLER::CURLHandler::instance = nullptr;
+APIPOLLER::CurlHandler* APIPOLLER::CurlHandler::instance = nullptr;
 
-APIPOLLER::CURLHandler *APIPOLLER::CURLHandler::getInstance()
+APIPOLLER::CurlHandler *APIPOLLER::CurlHandler::getInstance()
 {
     if (instance == nullptr) {
-        instance = new APIPOLLER::CURLHandler();
+        instance = new APIPOLLER::CurlHandler();
     }
 
     return instance;
 }
 
 
-bool APIPOLLER::CURLHandler::init(CURLcode& curlCode)
+bool APIPOLLER::CurlHandler::init(CURLcode& curlCode)
 {
     curlCode = curl_global_init(CURL_GLOBAL_ALL);
     if (curlCode == CURLE_OK) {
@@ -23,7 +23,7 @@ bool APIPOLLER::CURLHandler::init(CURLcode& curlCode)
 }
 
 
-void APIPOLLER::CURLHandler::destroy()
+void APIPOLLER::CurlHandler::destroy()
 {
     if (!isGloballyInitialized()) {
         return;
@@ -34,7 +34,7 @@ void APIPOLLER::CURLHandler::destroy()
 }
 
 
-bool APIPOLLER::CURLHandler::isGloballyInitialized()
+bool APIPOLLER::CurlHandler::isGloballyInitialized()
 {
     return globallyInitialized;
 }
