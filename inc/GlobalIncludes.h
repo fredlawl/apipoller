@@ -11,6 +11,6 @@
 #include <csignal>
 
 #include <curl/curl.h>
-#include "CURLConnectionHandler.h"
+#include "CURLHandler.h"
 
 #endif

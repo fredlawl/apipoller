@@ -32,7 +32,7 @@ bool APIPOLLER::TwitterPoller::fetch()
 bool APIPOLLER::TwitterPoller::openConnection()
 {
     CURLcode code;
-    CURLConnectionHandler::getInstance()->init(code);
+    CURLHandler::getInstance()->init(code);
     std::cout << "Open connection..." << std::endl;
 
     // Set the o-auth timestamp
@@ -53,7 +53,7 @@ void APIPOLLER::TwitterPoller::setOAuthTimestamp()
 
 bool APIPOLLER::TwitterPoller::closeConnection()
 {
-    CURLConnectionHandler::getInstance()->destroy();
+    CURLHandler::getInstance()->destroy();
     return true;
 }
 
