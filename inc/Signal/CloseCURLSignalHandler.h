@@ -8,7 +8,8 @@ namespace APIPOLLER {
     class CloseCURLSignalHandler;
 }
 
-class APIPOLLER::CloseCURLSignalHandler : public ISignalHandler {
+class APIPOLLER::CloseCURLSignalHandler : public ISignalHandler
+{
 public:
     void handle(int signum);
 };

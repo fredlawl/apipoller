@@ -7,7 +7,8 @@ namespace APIPOLLER {
     class SignalManager;
 }
 
-class APIPOLLER::SignalManager {
+class APIPOLLER::SignalManager
+{
 public:
     static SignalManager* getInstance();
 

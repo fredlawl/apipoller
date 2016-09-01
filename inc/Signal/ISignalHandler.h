@@ -9,7 +9,8 @@ namespace APIPOLLER {
 }
 
 
-class APIPOLLER::ISignalHandler {
+class APIPOLLER::ISignalHandler
+{
 public:
     virtual ~ISignalHandler() { };
     virtual void handle(int signum) = 0;
