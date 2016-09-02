@@ -18,31 +18,29 @@ public:
     static CurlHandler* getInstance();
 
     /**
-     * Function to write data to a buffer from CURL.
+     * Function to write data from a response stream.
      *
-     * @param void* contents Stream contents coming in
-     * @param size_t size Size of individual block
+     * @param void* contents
+     * @param size_t sizeOfBlock
      * @param size_t numberOfBlocks
-     * @param void* buffer Buffer pointer should be passed a string. This doesn't have to be the case, but this will be dynamically casted to a string..
+     * @param void* stringBuffer
      *
      * @return size_t Bytes written
-     *
-     * @see http://stackoverflow.com/a/9786295/6018969
      */
-    static size_t writeToString(void *contents, size_t size, size_t numberOfBlocks, void *buffer);
+    static size_t writeToString(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *stringBuffer);
 
 
     /**
-     * Function to write data to a buffer from CURL.
+     * Function to write data from a response stream.
      *
-     * @param void* contents Stream contents coming in
-     * @param size_t size Size of individual block
+     * @param void* contents
+     * @param size_t sizeOfBlock
      * @param size_t numberOfBlocks
-     * @param void* buffer Buffer pointer should be passed a string. This doesn't have to be the case, but this will be dynamically casted to settings_t
+     * @param void* settingsContainer
      *
      * @return size_t Bytes written
      */
-    static size_t writeToSettings(void *contents, size_t size, size_t numberOfBlocks, void *buffer);
+    static size_t writeToSettings(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *settingsContainer);
 
 
     bool init(CURLcode& curlCode);

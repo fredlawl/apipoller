@@ -40,17 +40,17 @@ bool APIPOLLER::CurlHandler::isGloballyInitialized()
 }
 
 
-size_t APIPOLLER::CurlHandler::writeToString(void *contents, size_t size, size_t numberOfBlocks, void *buffer)
+size_t APIPOLLER::CurlHandler::writeToString(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *stringBuffer)
 {
-    ((String*) buffer)->append((char*) contents, size * numberOfBlocks);
-    return size * numberOfBlocks;
+    ((String*) stringBuffer)->append((char*) contents, sizeOfBlock * numberOfBlocks);
+    return sizeOfBlock * numberOfBlocks;
 }
 
 
-size_t APIPOLLER::CurlHandler::writeToSettings(void *contents, size_t size, size_t numberOfBlocks, void *buffer)
+size_t APIPOLLER::CurlHandler::writeToSettings(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *settingsContainer)
 {
     // ... stub
-    return size * numberOfBlocks;
+    return sizeOfBlock * numberOfBlocks;
 }
 
 
