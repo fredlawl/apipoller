@@ -28,7 +28,7 @@ public:
     inline Method getMethod() const { return method; };
     inline void setMethod(Method method) { this->method = method; };
 
-    inline const String& getUrl() const { return url; }
+    inline String getUrl() const { return url; }
     inline void setUrl(const String& url) { this->url = url; }
 
     /**
