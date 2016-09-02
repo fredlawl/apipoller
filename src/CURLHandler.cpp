@@ -40,6 +40,15 @@ bool APIPOLLER::CurlHandler::isGloballyInitialized()
 }
 
 
+size_t APIPOLLER::CurlHandler::writeFunction(void *contents, size_t size, size_t numberOfBlocks, void *buffer)
+{
+    ((String*) buffer)->append((char*) contents, size * numberOfBlocks);
+    return size * numberOfBlocks;
+}
+
+
+
+
 
 
 
