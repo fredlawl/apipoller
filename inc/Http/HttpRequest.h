@@ -10,7 +10,7 @@ namespace APIPOLLER {
 class APIPOLLER::HttpRequest
 {
 public:
-    enum class Method {
+    enum class Method : uint8_t {
         GET,
         POST,
         PUT,
