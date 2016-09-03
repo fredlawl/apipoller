@@ -2,6 +2,7 @@
 #define APIPOLLER_CURLCONNECTIONHANDLER_H
 
 #include "APIPoller.h"
+#include "Pollers/IStreamReader.h"
 
 namespace APIPOLLER {
     class CurlHandler;
@@ -41,6 +42,19 @@ public:
      * @return size_t Bytes written
      */
     static size_t writeToSettings(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *settingsContainer);
+
+
+    /**
+     * Function to write data from a response stream.
+     *
+     * @param void* contents
+     * @param size_t sizeOfBlock
+     * @param size_t numberOfBlocks
+     * @param void* streamReader
+     *
+     * @return size_t Bytes written
+     */
+    static size_t writeToStreamReader(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *streamReader);
 
 
     bool init(CURLcode& curlCode);

@@ -54,10 +54,10 @@ size_t APIPOLLER::CurlHandler::writeToSettings(void *contents, size_t sizeOfBloc
 }
 
 
-
-
-
-
-
-
+size_t APIPOLLER::CurlHandler::writeToStreamReader(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void* streamReader)
+{
+    String contentAsString((char*) contents, sizeOfBlock);
+    ((APIPOLLER::IStreamReader*) streamReader)->readString(contentAsString);
+    return sizeOfBlock * numberOfBlocks;
+}
 

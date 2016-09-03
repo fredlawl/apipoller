@@ -7,7 +7,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_HOME_DIRECTORY}/bin)
 set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "/usr/lib")
 set(LIBRARIES "")
 
-set(SOURCE_FILES src/APIPoller.cpp inc/APIPoller.h inc/GlobalIncludes.h src/Pollers/TwitterPoller.cpp inc/Pollers/TwitterPoller.h inc/Signal/ISignalHandler.h inc/Signal/CloseCURLSignalHandler.h src/Signal/CloseCURLSignalHandler.cpp inc/Signal/SignalManager.h src/Signal/SignalManager.cpp inc/Http/CurlHttpRequest.h inc/Http/HttpResponse.h src/Http/CurlHttpRequest.cpp src/Http/HttpRequest.cpp inc/Http/HttpRequest.h src/Encoders/IEncoder.cpp inc/Encoders/IEncoder.h src/Encoders/UrlEncoder.cpp inc/Encoders/UrlEncoder.h inc/Pollers/Poller.h src/Pollers/Poller.cpp inc/CurlHandler.h src/CurlHandler.cpp)
+set(SOURCE_FILES src/APIPoller.cpp inc/APIPoller.h inc/GlobalIncludes.h src/Pollers/TwitterPoller.cpp inc/Pollers/TwitterPoller.h inc/Signal/ISignalHandler.h inc/Signal/CloseCURLSignalHandler.h src/Signal/CloseCURLSignalHandler.cpp inc/Signal/SignalManager.h src/Signal/SignalManager.cpp inc/Http/CurlHttpRequest.h inc/Http/HttpResponse.h src/Http/CurlHttpRequest.cpp src/Http/HttpRequest.cpp inc/Http/HttpRequest.h src/Encoders/IEncoder.cpp inc/Encoders/IEncoder.h src/Encoders/UrlEncoder.cpp inc/Encoders/UrlEncoder.h inc/Pollers/Poller.h src/Pollers/Poller.cpp inc/CurlHandler.h src/CurlHandler.cpp src/Pollers/TwitterStreamReader.cpp inc/Pollers/IStreamReader.h inc/Pollers/TwitterStreamReader.h)
 add_executable(${BINARY_NAME} ${SOURCE_FILES})
 
 
