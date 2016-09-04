@@ -5,8 +5,9 @@
 #include "../../inc/Pollers/TwitterStreamReader.h"
 
 
-void APIPOLLER::TwitterStreamReader::readString(const APIPOLLER::String& data)
+void APIPOLLER::TwitterStreamReader::readString(String* data)
 {
-
+    std::cout << "reading " << data << std::endl;
+    delete data;
 }
 
