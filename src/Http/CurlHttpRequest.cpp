@@ -16,6 +16,18 @@ APIPOLLER::CurlHttpRequest::CurlHttpRequest(const String &url, Method method)
 }
 
 
+
+APIPOLLER::CurlHttpRequest::CurlHttpRequest(IStreamReader *streamReader)
+{
+    setUrl("");
+    setMethod(Method::GET);
+    open();
+    this->streamReader = streamReader;
+}
+
+
+
+
 APIPOLLER::CurlHttpRequest::~CurlHttpRequest()
 {
     close();
@@ -25,6 +37,12 @@ APIPOLLER::CurlHttpRequest::~CurlHttpRequest()
 APIPOLLER::CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithUrlAndMethod(const String &url, Method method)
 {
     return new CurlHttpRequest(url, method);
+}
+
+
+CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithStreamReader(IStreamReader *streamReader)
+{
+    return new CurlHttpRequest(streamReader);
 }
 
 

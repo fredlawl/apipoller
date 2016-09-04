@@ -15,6 +15,7 @@ public:
     ~CurlHttpRequest();
 
     static CurlHttpRequest* createCurlHttpRequestWithUrlAndMethod(const String& url, Method method);
+    static CurlHttpRequest* createCurlHttpRequestWithStreamReader(IStreamReader* streamReader);
     static CurlHttpRequest* createEmptyCurlHttpRequest();
 
     bool sendSimpleRequest() const;
@@ -25,9 +26,11 @@ protected:
 
 private:
     CURL* curlHandle = nullptr;
+    IStreamReader* streamReader;
 
     CurlHttpRequest();
     CurlHttpRequest(const String& url, Method method);
+    CurlHttpRequest(IStreamReader* streamReader);
 
 };
 
