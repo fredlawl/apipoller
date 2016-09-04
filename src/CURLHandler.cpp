@@ -59,6 +59,7 @@ size_t APIPOLLER::CurlHandler::writeToStreamReader(void *contents, size_t sizeOf
     String* contentAsString = new String((char*) contents, sizeOfBlock * numberOfBlocks);
     IStreamReader* reader = ((APIPOLLER::IStreamReader*) streamReader);
     reader->readString(contentAsString);
+    delete contentAsString;
     return sizeOfBlock * numberOfBlocks;
 }
 

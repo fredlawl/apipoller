@@ -8,6 +8,5 @@
 void APIPOLLER::TwitterStreamReader::readString(String* data)
 {
     std::cout << "reading " << data << std::endl;
-    delete data;
 }
 
