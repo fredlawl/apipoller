@@ -10,14 +10,12 @@ namespace APIPOLLER {
 class APIPOLLER::IStreamReader
 {
 public:
-    virtual void readString(const String& data) = 0;
+    virtual void readString(const APIPOLLER::String& data) = 0;
 
     virtual ~IStreamReader() { }
 
-private:
+protected:
     IStreamReader() { };
-    IStreamReader& operator=(const IStreamReader&) = delete;
-    IStreamReader(const IStreamReader&) = delete;
 };
 
 #endif

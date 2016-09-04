@@ -4,3 +4,9 @@
 
 #include "../../inc/Pollers/TwitterStreamReader.h"
 
+
+void APIPOLLER::TwitterStreamReader::readString(const APIPOLLER::String& data)
+{
+
+}
+

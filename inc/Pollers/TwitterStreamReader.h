@@ -1,7 +1,6 @@
 #ifndef APIPOOLER_TWITTERSTREAMREADER_H
 #define APIPOOLER_TWITTERSTREAMREADER_H
 
-#include "../APIPoller.h"
 #include "IStreamReader.h"
 
 namespace APIPOLLER {
@@ -10,7 +9,11 @@ namespace APIPOLLER {
 
 class APIPOLLER::TwitterStreamReader : public IStreamReader
 {
+public:
+    TwitterStreamReader() { }
+    ~TwitterStreamReader() { }
 
+    void readString(const String& data);
 };
 
 #endif
