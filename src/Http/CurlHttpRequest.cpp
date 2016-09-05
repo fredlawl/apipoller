@@ -1,4 +1,5 @@
 #include "../../inc/Http/CurlHttpRequest.h"
+#include "../../inc/Http/HttpResponse.h"
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {
@@ -57,19 +58,24 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendDeleteRequest(const Str
 
 APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, const String& url) const
 {
-    if (!curlHandle) {
+    if (!isCurlInitiated()) {
         return nullptr;
     }
 
+    HttpResponse* response = HttpResponse::createResponse();
     CURLcode curlResponseStatus = CURLE_OK;
+
+    curl_easy_setopt(curlHandle, CURLOPT_URL, url.c_str());
+    curl_easy_setopt(curlHandle, CURLOPT_FOLLOWLOCATION, 1L);
+    setCurlMethod(method);
+    setResponseHeaderWriter(response);
+    setResponseBodyWriter(response);
 
     // ... do parameter encodings
     // ... fill-in headers
     // ... fill in request parameters
 
-//    return (curlResponseStatus == CURLE_OK);
-
-    return nullptr;
+    return response;
 }
 
 
@@ -81,8 +87,52 @@ void APIPOLLER::CurlHttpRequest::open()
 
 void APIPOLLER::CurlHttpRequest::close()
 {
-    if (!curlHandle)
+    if (!isCurlInitiated())
         return;
 
     curl_easy_cleanup(curlHandle);
+}
+
+
+void APIPOLLER::CurlHttpRequest::setResponseHeaderWriter(HttpResponse* response) const
+{
+    curl_easy_setopt(curlHandle, CURLOPT_HEADERFUNCTION, CurlHandler::writeToSettings);
+    curl_easy_setopt(curlHandle, CURLOPT_HEADERDATA, response->headers);
+}
+
+
+void APIPOLLER::CurlHttpRequest::setResponseBodyWriter(HttpResponse* response) const
+{
+    if (hasStreamReader()) {
+        setResponseStreamWriter(response);
+        return;
+    }
+
+    curl_easy_setopt(curlHandle, CURLOPT_WRITEFUNCTION, CurlHandler::writeToString);
+    curl_easy_setopt(curlHandle, CURLOPT_WRITEDATA, response->body);
+}
+
+
+void APIPOLLER::CurlHttpRequest::setResponseStreamWriter(HttpResponse* response) const
+{
+    curl_easy_setopt(curlHandle, CURLOPT_WRITEFUNCTION, CurlHandler::writeToStreamReader);
+    curl_easy_setopt(curlHandle, CURLOPT_WRITEDATA, streamReader);
+}
+
+
+void APIPOLLER::CurlHttpRequest::setCurlMethod(Method method) const
+{
+    switch (method) {
+        case Method::GET:
+            curl_easy_setopt(curlHandle, CURLOPT_HTTPGET, 1L);
+            break;
+        case Method::POST:
+            curl_easy_setopt(curlHandle, CURLOPT_POST, 1);
+            break;
+        case Method::DELETE:
+            curl_easy_setopt(curlHandle, CURLOPT_CUSTOMREQUEST, "DELETE");
+        case Method::PUT:
+            curl_easy_setopt(curlHandle, CURLOPT_CUSTOMREQUEST, "PUT");
+            break;
+    }
 }

@@ -1,14 +1,9 @@
 #include "../../inc/Http/HttpResponse.h"
 
-APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponseFromHeaders(const APIPOLLER::settings_t &headers)
-{
-    return nullptr;
-}
 
-
-APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createEmptyResponse()
+APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponse()
 {
-    return nullptr;
+    return new HttpResponse();
 }
 
 

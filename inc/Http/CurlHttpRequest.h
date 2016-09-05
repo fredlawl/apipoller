@@ -25,6 +25,9 @@ public:
     HttpResponse* sendDeleteRequest(const String& url) const;
     HttpResponse* sendRequest(Method method, const String& url) const;
 
+    inline bool isCurlInitiated() const { return (curlHandle != nullptr); }
+    inline bool hasStreamReader() const { return (streamReader != nullptr); }
+
 protected:
     void open();
     void close();
@@ -32,6 +35,11 @@ protected:
 private:
     CURL* curlHandle = nullptr;
     IStreamReader* streamReader = nullptr;
+
+    void setCurlMethod(Method method) const;
+    void setResponseHeaderWriter(HttpResponse* response) const;
+    void setResponseBodyWriter(HttpResponse* response) const;
+    void setResponseStreamWriter(HttpResponse* response) const;
 
 };
 

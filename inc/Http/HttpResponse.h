@@ -10,15 +10,16 @@ namespace APIPOLLER {
 class APIPOLLER::HttpResponse
 {
 public:
-    static HttpResponse* createResponseFromHeaders(const settings_t& headers);
-    static HttpResponse* createEmptyResponse();
+    settings_t headers;
+    String body;
+
+    static HttpResponse* createResponse();
 
     HttpResponse() { };
-    HttpResponse(const settings_t& headers) { this->headers = headers; }
     virtual ~HttpResponse() { }
 
 private:
-    settings_t headers;
+
 };
 
 #endif
