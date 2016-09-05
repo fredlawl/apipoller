@@ -11,21 +11,19 @@ namespace APIPOLLER {
 class APIPOLLER::CurlHttpRequest : public APIPOLLER::HttpRequest
 {
 public:
-    static CurlHttpRequest* createCurlHttpRequestWithUrl(const String& url);
     static CurlHttpRequest* createCurlHttpRequestWithStreamReader(IStreamReader* streamReader);
-    static CurlHttpRequest* createEmptyCurlHttpRequest();
+    static CurlHttpRequest* createCurlHttpRequest();
 
     CurlHttpRequest();
-    CurlHttpRequest(const String& url) : HttpRequest(url) { }
     CurlHttpRequest(IStreamReader* streamReader);
 
     ~CurlHttpRequest();
 
-    HttpResponse* sendPostRequest() const;
-    HttpResponse* sendGetRequest() const;
-    HttpResponse* sendPutRequest() const;
-    HttpResponse* sendDeleteRequest() const;
-    HttpResponse* sendRequest(Method method) const;
+    HttpResponse* sendPostRequest(const String& url) const;
+    HttpResponse* sendGetRequest(const String& url) const;
+    HttpResponse* sendPutRequest(const String& url) const;
+    HttpResponse* sendDeleteRequest(const String& url) const;
+    HttpResponse* sendRequest(Method method, const String& url) const;
 
 protected:
     void open();

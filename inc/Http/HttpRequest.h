@@ -24,19 +24,13 @@ public:
 
     virtual ~HttpRequest() {};
 
-    virtual HttpResponse* sendPostRequest() const = 0;
-    virtual HttpResponse* sendGetRequest() const = 0;
-    virtual HttpResponse* sendPutRequest() const = 0;
-    virtual HttpResponse* sendDeleteRequest() const = 0;
-    virtual HttpResponse* sendRequest(Method method) const = 0;
+    virtual HttpResponse* sendPostRequest(const String& url) const = 0;
+    virtual HttpResponse* sendGetRequest(const String& url) const = 0;
+    virtual HttpResponse* sendPutRequest(const String& url) const = 0;
+    virtual HttpResponse* sendDeleteRequest(const String& url) const = 0;
+    virtual HttpResponse* sendRequest(Method method, const String& url) const = 0;
 
     inline void setEncoder(IEncoder* encoder) { this->encoder = encoder; };
-
-    inline Method getMethod() const { return method; };
-    inline void setMethod(Method method) { this->method = method; };
-
-    inline String getUrl() const { return url; }
-    inline void setUrl(const String& url) { this->url = url; }
 
     /**
      * HttpRequest.cpp
@@ -47,12 +41,9 @@ public:
     virtual settings_t* encodeParameters() const;
 
 protected:
-    String url;
-    Method method;
     IEncoder* encoder = nullptr;
 
     HttpRequest() {};
-    HttpRequest(const String& url);
 
     /**
      * Call to open a connection request resource.

@@ -2,17 +2,14 @@
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {
-    setUrl("");
     open();
 }
 
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest(IStreamReader* streamReader)
 {
-    setUrl("");
-    setMethod(Method::GET);
-    open();
     this->streamReader = streamReader;
+    open();
 }
 
 
@@ -22,49 +19,43 @@ APIPOLLER::CurlHttpRequest::~CurlHttpRequest()
 }
 
 
-APIPOLLER::CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithUrl(const String &url)
-{
-    return new CurlHttpRequest(url);
-}
-
-
 APIPOLLER::CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithStreamReader(IStreamReader *streamReader)
 {
     return new CurlHttpRequest(streamReader);
 }
 
 
-APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createEmptyCurlHttpRequest()
+APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequest()
 {
     return new CurlHttpRequest();
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest() const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const String& url) const
 {
-    return sendRequest(Method::POST);
+    return sendRequest(Method::POST, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendGetRequest() const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendGetRequest(const String& url) const
 {
-    return sendRequest(Method::GET);
+    return sendRequest(Method::GET, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPutRequest() const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPutRequest(const String& url) const
 {
-    return sendRequest(Method::PUT);
+    return sendRequest(Method::PUT, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendDeleteRequest() const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendDeleteRequest(const String& url) const
 {
-    return sendRequest(Method::DELETE);
+    return sendRequest(Method::DELETE, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method) const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, const String& url) const
 {
     if (!curlHandle) {
         return nullptr;
