@@ -8,6 +8,7 @@ namespace APIPOLLER {
     typedef std::chrono::system_clock::time_point timepoint_t;
     typedef std::unordered_map<String, String> settings_t;
     typedef std::unordered_set<char> characterset_t;
+    typedef std::vector<String> StringArray;
 }
 
 #endif
