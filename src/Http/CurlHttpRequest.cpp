@@ -98,7 +98,7 @@ void APIPOLLER::CurlHttpRequest::close()
 void APIPOLLER::CurlHttpRequest::setResponseHeaderWriter(HttpResponse* response) const
 {
     curl_easy_setopt(curlHandle, CURLOPT_HEADERFUNCTION, CurlHandler::writeToSettings);
-    curl_easy_setopt(curlHandle, CURLOPT_HEADERDATA, response->headers);
+    curl_easy_setopt(curlHandle, CURLOPT_HEADERDATA, &response->headers);
 }
 
 
@@ -110,7 +110,7 @@ void APIPOLLER::CurlHttpRequest::setResponseBodyWriter(HttpResponse* response) c
     }
 
     curl_easy_setopt(curlHandle, CURLOPT_WRITEFUNCTION, CurlHandler::writeToString);
-    curl_easy_setopt(curlHandle, CURLOPT_WRITEDATA, response->body);
+    curl_easy_setopt(curlHandle, CURLOPT_WRITEDATA, &response->body);
 }
 
 
