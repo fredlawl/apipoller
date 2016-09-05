@@ -26,7 +26,7 @@ protected:
 
 private:
     CURL* curlHandle = nullptr;
-    IStreamReader* streamReader;
+    IStreamReader* streamReader = nullptr;
 
     CurlHttpRequest();
     CurlHttpRequest(const String& url, Method method);
