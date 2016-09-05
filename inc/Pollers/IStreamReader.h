@@ -13,7 +13,7 @@ namespace APIPOLLER {
 class APIPOLLER::IStreamReader
 {
 public:
-    virtual void readString(String* data) = 0;
+    virtual void readString(const String& data) = 0;
 
     virtual ~IStreamReader() { }
 

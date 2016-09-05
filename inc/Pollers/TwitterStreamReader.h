@@ -13,7 +13,7 @@ public:
     TwitterStreamReader() { }
     ~TwitterStreamReader() { }
 
-    void readString(String* data);
+    void readString(const String& data);
 };
 
 #endif
