@@ -75,6 +75,10 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     // ... do parameter encodings
     // ... fill-in headers
     // ... fill in request parameters
+    curlResponseStatus = curl_easy_perform(curlHandle);
+    if (curlResponseStatus != CURLE_OK) {
+        std::cerr << "Request failed with message: " << curl_easy_strerror(curlResponseStatus) << std::endl;
+    }
 
     return response;
 }
