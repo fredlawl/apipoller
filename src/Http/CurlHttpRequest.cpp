@@ -66,7 +66,8 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     CURLcode curlResponseStatus = CURLE_OK;
 
     curl_easy_setopt(curlHandle, CURLOPT_URL, url.c_str());
-    curl_easy_setopt(curlHandle, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(curlHandle, CURLOPT_FOLLOWLOCATION, true);
+    curl_easy_setopt(curlHandle, CURLOPT_NOPROGRESS, 1L);
     setCurlMethod(method);
     setResponseHeaderWriter(response);
     setResponseBodyWriter(response);
