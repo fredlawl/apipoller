@@ -1,6 +1,13 @@
 #include "../../inc/Http/HttpRequest.h"
 #include "../../inc/Encoders/IEncoder.h"
 
+
+APIPOLLER::HttpRequest::HttpRequest(const String &url)
+{
+    setUrl(url);
+}
+
+
 APIPOLLER::settings_t *APIPOLLER::HttpRequest::encodeParameters() const
 {
     settings_t* queryParameters = nullptr;
@@ -19,4 +26,3 @@ APIPOLLER::settings_t *APIPOLLER::HttpRequest::encodeParameters() const
 
     return queryParameters;
 }
-

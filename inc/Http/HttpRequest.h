@@ -6,6 +6,7 @@
 namespace APIPOLLER {
     class HttpRequest;
     class IEncoder;
+    class HttpResponse;
 }
 
 class APIPOLLER::HttpRequest
@@ -22,9 +23,14 @@ public:
     settings_t headers;
 
     virtual ~HttpRequest() {};
-    virtual bool sendSimpleRequest() const = 0;
 
-    void setEncoder(IEncoder* encoder) { this->encoder = encoder; };
+    virtual HttpResponse* sendPostRequest() const = 0;
+    virtual HttpResponse* sendGetRequest() const = 0;
+    virtual HttpResponse* sendPutRequest() const = 0;
+    virtual HttpResponse* sendDeleteRequest() const = 0;
+    virtual HttpResponse* sendRequest(Method method) const = 0;
+
+    inline void setEncoder(IEncoder* encoder) { this->encoder = encoder; };
 
     inline Method getMethod() const { return method; };
     inline void setMethod(Method method) { this->method = method; };
@@ -46,6 +52,7 @@ protected:
     IEncoder* encoder = nullptr;
 
     HttpRequest() {};
+    HttpRequest(const String& url);
 
     /**
      * Call to open a connection request resource.

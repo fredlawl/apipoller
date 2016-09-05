@@ -13,11 +13,9 @@ public:
     static HttpResponse* createResponseFromHeaders(const settings_t& headers);
     static HttpResponse* createEmptyResponse();
 
-    virtual ~HttpResponse() { }
-
-protected:
     HttpResponse() { };
     HttpResponse(const settings_t& headers) { this->headers = headers; }
+    virtual ~HttpResponse() { }
 
 private:
     settings_t headers;

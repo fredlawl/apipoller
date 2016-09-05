@@ -3,21 +3,11 @@
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {
     setUrl("");
-    setMethod(Method::GET);
     open();
 }
 
 
-APIPOLLER::CurlHttpRequest::CurlHttpRequest(const String &url, Method method)
-{
-    setUrl(url);
-    setMethod(method);
-    open();
-}
-
-
-
-APIPOLLER::CurlHttpRequest::CurlHttpRequest(IStreamReader *streamReader)
+APIPOLLER::CurlHttpRequest::CurlHttpRequest(IStreamReader* streamReader)
 {
     setUrl("");
     setMethod(Method::GET);
@@ -26,17 +16,15 @@ APIPOLLER::CurlHttpRequest::CurlHttpRequest(IStreamReader *streamReader)
 }
 
 
-
-
 APIPOLLER::CurlHttpRequest::~CurlHttpRequest()
 {
     close();
 }
 
 
-APIPOLLER::CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithUrlAndMethod(const String &url, Method method)
+APIPOLLER::CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithUrl(const String &url)
 {
-    return new CurlHttpRequest(url, method);
+    return new CurlHttpRequest(url);
 }
 
 
@@ -52,10 +40,34 @@ APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createEmptyCurlHttpReque
 }
 
 
-bool APIPOLLER::CurlHttpRequest::sendSimpleRequest() const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest() const
+{
+    return sendRequest(Method::POST);
+}
+
+
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendGetRequest() const
+{
+    return sendRequest(Method::GET);
+}
+
+
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPutRequest() const
+{
+    return sendRequest(Method::PUT);
+}
+
+
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendDeleteRequest() const
+{
+    return sendRequest(Method::DELETE);
+}
+
+
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method) const
 {
     if (!curlHandle) {
-        return false;
+        return nullptr;
     }
 
     CURLcode curlResponseStatus = CURLE_OK;
@@ -64,7 +76,9 @@ bool APIPOLLER::CurlHttpRequest::sendSimpleRequest() const
     // ... fill-in headers
     // ... fill in request parameters
 
-    return (curlResponseStatus == CURLE_OK);
+//    return (curlResponseStatus == CURLE_OK);
+
+    return nullptr;
 }
 
 
