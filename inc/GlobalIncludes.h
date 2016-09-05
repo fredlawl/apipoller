@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <csignal>
+#include <vector>
 
 #include <curl/curl.h>
 #include "CurlHandler.h"

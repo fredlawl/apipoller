@@ -1,10 +1,11 @@
 #ifndef APIPOLLER_HTTPREQUEST_H
 #define APIPOLLER_HTTPREQUEST_H
 
-#include "../Encoders/IEncoder.h"
+#include "../APIPoller.h"
 
 namespace APIPOLLER {
     class HttpRequest;
+    class IEncoder;
 }
 
 class APIPOLLER::HttpRequest

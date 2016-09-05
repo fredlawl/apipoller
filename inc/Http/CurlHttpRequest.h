@@ -1,11 +1,11 @@
 #ifndef APIPOLLER_CURLHTTPREQUEST_H
 #define APIPOLLER_CURLHTTPREQUEST_H
 
-#include "../APIPoller.h"
 #include "HttpRequest.h"
 
 namespace APIPOLLER {
     class CurlHttpRequest;
+    class IStreamReader;
 }
 
 class APIPOLLER::CurlHttpRequest : public APIPOLLER::HttpRequest
@@ -14,7 +14,7 @@ public:
 
     ~CurlHttpRequest();
 
-    static CurlHttpRequest* createCurlHttpRequestWithUrlAndMethod(const String& url, Method method);
+    static CurlHttpRequest* createCurlHttpRequestWithUrlAndMethod(const String& url, APIPOLLER::HttpRequest::Method method);
     static CurlHttpRequest* createCurlHttpRequestWithStreamReader(IStreamReader* streamReader);
     static CurlHttpRequest* createEmptyCurlHttpRequest();
 

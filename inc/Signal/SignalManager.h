@@ -4,6 +4,8 @@
 #include "ISignalHandler.h"
 
 namespace APIPOLLER {
+    class ISignalManager;
+    class ISignalHandler;
     class SignalManager;
 }
 

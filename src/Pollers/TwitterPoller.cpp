@@ -1,4 +1,5 @@
 #include "../../inc/Pollers/TwitterPoller.h"
+#include "../../inc/Http/HttpRequest.h"
 
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
 

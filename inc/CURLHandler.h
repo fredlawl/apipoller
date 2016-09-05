@@ -2,7 +2,6 @@
 #define APIPOLLER_CURLCONNECTIONHANDLER_H
 
 #include "APIPoller.h"
-#include "Pollers/IStreamReader.h"
 
 namespace APIPOLLER {
     class CurlHandler;
