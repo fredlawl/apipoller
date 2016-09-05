@@ -5,9 +5,6 @@
 
 namespace APIPOLLER {
     class IStreamReader;
-
-    // hack, APIPoller.h isn't being pulled in? Needs further investigation
-    typedef std::string String;
 }
 
 class APIPOLLER::IStreamReader
