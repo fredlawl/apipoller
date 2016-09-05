@@ -1,5 +1,6 @@
 #include "../inc/CurlHandler.h"
 #include "../inc/Pollers/IStreamReader.h"
+#include "../inc/Utility.h"
 
 APIPOLLER::CurlHandler* APIPOLLER::CurlHandler::instance = nullptr;
 
@@ -43,23 +44,35 @@ bool APIPOLLER::CurlHandler::isGloballyInitialized()
 
 size_t APIPOLLER::CurlHandler::writeToString(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *stringBuffer)
 {
-    ((String*) stringBuffer)->append((char*) contents, sizeOfBlock * numberOfBlocks);
-    return sizeOfBlock * numberOfBlocks;
+    size_t totalSize = sizeOfBlock * numberOfBlocks;
+    ((String*) stringBuffer)->append((char*) contents, totalSize);
+    return totalSize;
 }
 
 
 size_t APIPOLLER::CurlHandler::writeToSettings(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *settingsContainer)
 {
-    // ... stub
-    return sizeOfBlock * numberOfBlocks;
+    size_t totalSize = sizeOfBlock * numberOfBlocks;
+    String header = String((char *) contents, totalSize);
+    settings_t *headers = ((settings_t *) settingsContainer);
+
+    StringArray parts = APIPOLLER::Utility::splitAtDelimiterOnce(header, ':');
+    if (parts.empty()) {
+        return totalSize;
+    }
+
+    headers->emplace(parts[0], parts[1]);
+
+    return totalSize;
 }
 
 
 size_t APIPOLLER::CurlHandler::writeToStreamReader(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void* streamReader)
 {
-    String contentAsString = String((char*) contents, sizeOfBlock * numberOfBlocks);
+    size_t totalSize = sizeOfBlock * numberOfBlocks;
+    String contentAsString = String((char*) contents, totalSize);
     IStreamReader* reader = ((APIPOLLER::IStreamReader*) streamReader);
     reader->readString(contentAsString);
-    return sizeOfBlock * numberOfBlocks;
+    return totalSize;
 }
 
