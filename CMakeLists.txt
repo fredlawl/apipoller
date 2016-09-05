@@ -43,7 +43,7 @@ set(SOURCE_FILES
 
         src/Pollers/TwitterStreamReader.cpp
         inc/Pollers/TwitterStreamReader.h
-        inc/Pollers/IStreamReader.h)
+        inc/Pollers/IStreamReader.h src/Http/HttpResponse.cpp)
 add_executable(${BINARY_NAME} ${SOURCE_FILES})
 
 
