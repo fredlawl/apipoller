@@ -2,7 +2,6 @@
 #include "../inc/Pollers/TwitterPoller.h"
 #include "../inc/Signal/SignalManager.h"
 #include "../inc/Signal/CloseCURLSignalHandler.h"
-#include "../inc/Http/CurlHttpRequest.h"
 #include "../inc/Encoders/UrlEncoder.h"
 
 int main (int argc, char** argv)
@@ -20,17 +19,15 @@ int main (int argc, char** argv)
     SignalManager::getInstance()->registerHandler(SIGHUP, &curlSignalHandler);
 
     UrlEncoder encoder;
-    HttpRequest* requestEngine = CurlHttpRequest::createEmptyCurlHttpRequest();
-    Poller* twitter = new TwitterPoller(requestEngine, &encoder);
+    Poller* twitter = new TwitterPoller(&encoder);
 
     // Show application is running
     std::cout << "Running " << twitter->getName() << std::endl;
 
     if (!twitter->run()) {
-        twitter->closeConnection();
+        std::cout << "Connection closed" << std::endl;
     }
 
-    delete requestEngine;
     delete twitter;
 
     return EXIT_SUCCESS;

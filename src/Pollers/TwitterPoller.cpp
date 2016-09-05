@@ -1,5 +1,7 @@
 #include "../../inc/Pollers/TwitterPoller.h"
-#include "../../inc/Http/HttpRequest.h"
+#include "../../inc/Pollers/TwitterStreamReader.h"
+#include "../../inc/Pollers/IStreamReader.h"
+#include "../../inc/Http/CurlHttpRequest.h"
 
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
 
@@ -10,10 +12,9 @@ APIPOLLER::TwitterPoller::TwitterPoller()
 }
 
 
-APIPOLLER::TwitterPoller::TwitterPoller(HttpRequest *httpRequest, IEncoder* encoder)
+APIPOLLER::TwitterPoller::TwitterPoller(IEncoder* encoder)
 {
-    httpRequest->setEncoder(encoder);
-    request = httpRequest;
+    this->encoder = encoder;
 }
 
 
@@ -25,7 +26,15 @@ APIPOLLER::TwitterPoller::~TwitterPoller()
 
 bool APIPOLLER::TwitterPoller::fetch()
 {
+    IStreamReader* twitterStreamReader = new TwitterStreamReader();
+    HttpRequest* requestEngine = CurlHttpRequest::createCurlHttpRequestWithStreamReader(twitterStreamReader);
+    requestEngine->setEncoder(encoder);
+
     std::cout << "Fetching data" << std::endl;
+
+    delete twitterStreamReader;
+    delete requestEngine;
+
     return true;
 }
 
