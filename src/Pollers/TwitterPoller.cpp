@@ -1,6 +1,5 @@
 #include "../../inc/Pollers/TwitterPoller.h"
 #include "../../inc/Pollers/TwitterStreamReader.h"
-#include "../../inc/Pollers/IStreamReader.h"
 #include "../../inc/Http/CurlHttpRequest.h"
 
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";

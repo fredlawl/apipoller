@@ -19,6 +19,7 @@ public:
 
     ~CurlHttpRequest();
 
+    HttpResponse* sendHeadersRequest(Method method, const String& url) const;
     HttpResponse* sendPostRequest(const String& url) const;
     HttpResponse* sendGetRequest(const String& url) const;
     HttpResponse* sendPutRequest(const String& url) const;

@@ -24,6 +24,7 @@ public:
 
     virtual ~HttpRequest() {};
 
+    virtual HttpResponse* sendHeadersRequest(Method method, const String& url) const = 0;
     virtual HttpResponse* sendPostRequest(const String& url) const = 0;
     virtual HttpResponse* sendGetRequest(const String& url) const = 0;
     virtual HttpResponse* sendPutRequest(const String& url) const = 0;

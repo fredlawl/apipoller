@@ -32,6 +32,13 @@ APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequest()
 }
 
 
+APIPOLLER::HttpResponse *APIPOLLER::CurlHttpRequest::sendHeadersRequest(Method method, const String &url) const
+{
+    curl_easy_setopt(curlHandle, CURLOPT_NOBODY, 1L);
+    return sendRequest(method, url);
+}
+
+
 APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const String& url) const
 {
     if (!isCurlInitiated()) {
