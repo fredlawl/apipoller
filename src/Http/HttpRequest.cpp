@@ -20,3 +20,25 @@ APIPOLLER::settings_t *APIPOLLER::HttpRequest::encodeParameters() const
 
     return queryParameters;
 }
+
+
+APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
+{
+    String queryString;
+    size_t counter = 0;
+    for (auto parameter : parameters) {
+
+        if (counter > 0) {
+            queryString.append('&', 1);
+        }
+
+        queryString.append(parameter.first, strlen(parameter.first.c_str()));
+        queryString.append('=', 1);
+        queryString.append(parameter.second, strlen(parameter.second.c_str()));
+        ++counter;
+    }
+
+    return queryString;
+}
+
+

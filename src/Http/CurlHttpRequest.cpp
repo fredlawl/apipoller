@@ -34,6 +34,14 @@ APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequest()
 
 APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const String& url) const
 {
+    if (!isCurlInitiated()) {
+        return nullptr;
+    }
+
+    const char* queryString = buildQueryString().c_str();
+    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDSIZE, ((long) strlen(queryString)));
+    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDS, queryString);
+
     return sendRequest(Method::POST, url);
 }
 

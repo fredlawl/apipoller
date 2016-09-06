@@ -40,6 +40,8 @@ public:
      */
     virtual settings_t* encodeParameters() const;
 
+    virtual String buildQueryString() const;
+
 protected:
     IEncoder* encoder = nullptr;
 
