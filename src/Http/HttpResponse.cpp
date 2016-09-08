@@ -7,17 +7,15 @@ APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponse()
 }
 
 
-APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponseWithHttpInformation(const String& httpVersion, long statusCode, const String& statusMessage)
+APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponseWithHttpInformation(const HTTP& httpInfo)
 {
     HttpResponse* responseWithHttpInformation = createResponse();
-    responseWithHttpInformation->setHttpInformation(httpVersion, statusCode, statusMessage);
+    responseWithHttpInformation->setHttpInformation(httpInfo);
     return responseWithHttpInformation;
 }
 
 
-void APIPOLLER::HttpResponse::setHttpInformation(const String& httpVersion, long statusCode, const String& statusMessage)
+void APIPOLLER::HttpResponse::setHttpInformation(const HTTP& httpInfo)
 {
-    this->statusCode = statusCode;
-    this->httpVersion = httpVersion;
-    this->statusMessage = statusMessage;
+    this->httpInfo = httpInfo;
 }

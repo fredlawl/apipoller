@@ -28,6 +28,7 @@ set(SOURCE_FILES
 
         src/Http/HttpRequest.cpp
         inc/Http/HttpRequest.h
+        inc/Http/HTTP.h
 
         src/Encoders/IEncoder.cpp
         inc/Encoders/IEncoder.h
