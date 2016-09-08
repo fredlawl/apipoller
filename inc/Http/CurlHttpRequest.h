@@ -43,6 +43,7 @@ private:
     void setResponseHeaderWriter(HttpResponse* response) const;
     void setResponseBodyWriter(HttpResponse* response);
     void setResponseStreamWriter(HttpResponse* response) const;
+    void setResponseToNothing() const;
 
 };
 

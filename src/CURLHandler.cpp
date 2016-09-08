@@ -76,3 +76,11 @@ size_t APIPOLLER::CurlHandler::writeToStreamReader(void *contents, size_t sizeOf
     return totalSize;
 }
 
+
+size_t APIPOLLER::CurlHandler::writeToNothing(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *doNotCast)
+{
+    return sizeOfBlock * numberOfBlocks;
+}
+
+
+

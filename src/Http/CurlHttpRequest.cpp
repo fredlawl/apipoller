@@ -125,6 +125,7 @@ void APIPOLLER::CurlHttpRequest::setResponseHeaderWriter(HttpResponse* response)
 void APIPOLLER::CurlHttpRequest::setResponseBodyWriter(HttpResponse* response)
 {
     if (!allowWriteBody()) {
+        setResponseToNothing();
         return;
     }
 
@@ -142,6 +143,12 @@ void APIPOLLER::CurlHttpRequest::setResponseStreamWriter(HttpResponse* response)
 {
     curl_easy_setopt(curlHandle, CURLOPT_WRITEFUNCTION, CurlHandler::writeToStreamReader);
     curl_easy_setopt(curlHandle, CURLOPT_WRITEDATA, streamReader);
+}
+
+
+void APIPOLLER::CurlHttpRequest::setResponseToNothing() const
+{
+    curl_easy_setopt(curlHandle, CURLOPT_WRITEFUNCTION, CurlHandler::writeToNothing);
 }
 
 
@@ -171,4 +178,3 @@ bool APIPOLLER::CurlHttpRequest::allowWriteBody()
 
     return true;
 }
-

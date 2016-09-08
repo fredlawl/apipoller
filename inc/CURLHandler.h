@@ -56,6 +56,19 @@ public:
     static size_t writeToStreamReader(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *streamReader);
 
 
+    /**
+     * Function to write NO data to ANYTHING
+     *
+     * @param void* contents
+     * @param size_t sizeOfBlock
+     * @param size_t numberOfBlocks
+     * @param void* doNotCast
+     *
+     * @return size_t Bytes written
+     */
+    static size_t writeToNothing(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *doNotCast);
+
+
     bool init(CURLcode& curlCode);
     void destroy();
     bool isGloballyInitialized();
