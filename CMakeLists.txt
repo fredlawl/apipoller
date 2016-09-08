@@ -28,7 +28,7 @@ set(SOURCE_FILES
 
         src/Http/HttpRequest.cpp
         inc/Http/HttpRequest.h
-        inc/Http/HTTP.h
+        inc/Http/Http.h
 
         src/Encoders/IEncoder.cpp
         inc/Encoders/IEncoder.h
@@ -44,7 +44,7 @@ set(SOURCE_FILES
 
         src/Pollers/TwitterStreamReader.cpp
         inc/Pollers/TwitterStreamReader.h
-        inc/Pollers/IStreamReader.h src/Http/HttpResponse.cpp inc/Utility.h)
+        inc/Pollers/IStreamReader.h src/Http/HttpResponse.cpp inc/Utility.h inc/Http/HttpHeaders.h)
 add_executable(${BINARY_NAME} ${SOURCE_FILES})
 
 

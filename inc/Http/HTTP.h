@@ -8,7 +8,7 @@ namespace APIPOLLER {
         String version;
         long statusCode;
         String message;
-    } HTTP;
+    } Http;
 }
 
 #endif
