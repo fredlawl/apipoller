@@ -40,7 +40,7 @@ APIPOLLER::HttpResponse *APIPOLLER::CurlHttpRequest::sendHeadersRequest(Method m
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const String& url) const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const String& url)
 {
     if (!isCurlInitiated()) {
         return nullptr;
@@ -54,25 +54,25 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const Strin
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendGetRequest(const String& url) const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendGetRequest(const String& url)
 {
     return sendRequest(Method::GET, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPutRequest(const String& url) const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPutRequest(const String& url)
 {
     return sendRequest(Method::PUT, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendDeleteRequest(const String& url) const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendDeleteRequest(const String& url)
 {
     return sendRequest(Method::DELETE, url);
 }
 
 
-APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, const String& url) const
+APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, const String& url)
 {
     if (!isCurlInitiated()) {
         return nullptr;

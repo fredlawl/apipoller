@@ -24,12 +24,12 @@ public:
 
     virtual ~HttpRequest() {};
 
-    virtual HttpResponse* sendHeadersRequest(Method method, const String& url) const = 0;
-    virtual HttpResponse* sendPostRequest(const String& url) const = 0;
-    virtual HttpResponse* sendGetRequest(const String& url) const = 0;
-    virtual HttpResponse* sendPutRequest(const String& url) const = 0;
-    virtual HttpResponse* sendDeleteRequest(const String& url) const = 0;
-    virtual HttpResponse* sendRequest(Method method, const String& url) const = 0;
+    virtual HttpResponse* sendHeadersRequest(Method method, const String& url) = 0;
+    virtual HttpResponse* sendPostRequest(const String& url) = 0;
+    virtual HttpResponse* sendGetRequest(const String& url) = 0;
+    virtual HttpResponse* sendPutRequest(const String& url) = 0;
+    virtual HttpResponse* sendDeleteRequest(const String& url) = 0;
+    virtual HttpResponse* sendRequest(Method method, const String& url) = 0;
 
     inline void setEncoder(IEncoder* encoder) { this->encoder = encoder; };
 

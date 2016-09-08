@@ -20,11 +20,11 @@ public:
     ~CurlHttpRequest();
 
     HttpResponse* sendHeadersRequest(Method method, const String& url);
-    HttpResponse* sendPostRequest(const String& url) const;
-    HttpResponse* sendGetRequest(const String& url) const;
-    HttpResponse* sendPutRequest(const String& url) const;
-    HttpResponse* sendDeleteRequest(const String& url) const;
-    HttpResponse* sendRequest(Method method, const String& url) const;
+    HttpResponse* sendPostRequest(const String& url);
+    HttpResponse* sendGetRequest(const String& url);
+    HttpResponse* sendPutRequest(const String& url);
+    HttpResponse* sendDeleteRequest(const String& url);
+    HttpResponse* sendRequest(Method method, const String& url);
 
     inline bool isCurlInitiated() const { return (curlHandle != nullptr); }
     inline bool hasStreamReader() const { return (streamReader != nullptr); }
