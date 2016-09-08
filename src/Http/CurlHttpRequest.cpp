@@ -32,8 +32,9 @@ APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequest()
 }
 
 
-APIPOLLER::HttpResponse *APIPOLLER::CurlHttpRequest::sendHeadersRequest(Method method, const String &url) const
+APIPOLLER::HttpResponse *APIPOLLER::CurlHttpRequest::sendHeadersRequest(Method method, const String &url)
 {
+    writeBody = false;
     curl_easy_setopt(curlHandle, CURLOPT_NOBODY, 1L);
     return sendRequest(method, url);
 }
@@ -121,8 +122,12 @@ void APIPOLLER::CurlHttpRequest::setResponseHeaderWriter(HttpResponse* response)
 }
 
 
-void APIPOLLER::CurlHttpRequest::setResponseBodyWriter(HttpResponse* response) const
+void APIPOLLER::CurlHttpRequest::setResponseBodyWriter(HttpResponse* response)
 {
+    if (!allowWriteBody()) {
+        return;
+    }
+
     if (hasStreamReader()) {
         setResponseStreamWriter(response);
         return;
@@ -156,3 +161,14 @@ void APIPOLLER::CurlHttpRequest::setCurlMethod(Method method) const
             break;
     }
 }
+
+bool APIPOLLER::CurlHttpRequest::allowWriteBody()
+{
+    if (!writeBody) {
+        writeBody = true;
+        return false;
+    }
+
+    return true;
+}
+

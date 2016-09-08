@@ -19,7 +19,7 @@ public:
 
     ~CurlHttpRequest();
 
-    HttpResponse* sendHeadersRequest(Method method, const String& url) const;
+    HttpResponse* sendHeadersRequest(Method method, const String& url);
     HttpResponse* sendPostRequest(const String& url) const;
     HttpResponse* sendGetRequest(const String& url) const;
     HttpResponse* sendPutRequest(const String& url) const;
@@ -36,10 +36,12 @@ protected:
 private:
     CURL* curlHandle = nullptr;
     IStreamReader* streamReader = nullptr;
+    bool writeBody = true;
 
+    inline bool allowWriteBody();
     void setCurlMethod(Method method) const;
     void setResponseHeaderWriter(HttpResponse* response) const;
-    void setResponseBodyWriter(HttpResponse* response) const;
+    void setResponseBodyWriter(HttpResponse* response);
     void setResponseStreamWriter(HttpResponse* response) const;
 
 };
