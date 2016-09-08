@@ -1,7 +1,7 @@
 #ifndef APIPOLLER_HTTPRESPONSE_H
 #define APIPOLLER_HTTPRESPONSE_H
 
-#include "HTTP.h"
+#include "Http.h"
 
 namespace APIPOLLER {
     class HttpResponse;
@@ -14,7 +14,7 @@ public:
     String body;
 
     static HttpResponse* createResponse();
-    static HttpResponse* createResponseWithHttpInformation(const HTTP& httpInfo);
+    static HttpResponse* createResponseWithHttpInformation(const Http& httpInfo);
 
     HttpResponse() { };
     virtual ~HttpResponse() { }
@@ -23,10 +23,10 @@ public:
     inline const String& getHttpVersion() { return this->httpInfo.version; }
     inline const String& getStatusMessage() { return this->httpInfo.message; }
 
-    void setHttpInformation(const HTTP& httpInfo);
+    void setHttpInformation(const Http& httpInfo);
 
 protected:
-    HTTP httpInfo;
+    Http httpInfo;
 
 };
 

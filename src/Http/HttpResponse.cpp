@@ -7,7 +7,7 @@ APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponse()
 }
 
 
-APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponseWithHttpInformation(const HTTP& httpInfo)
+APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponseWithHttpInformation(const Http& httpInfo)
 {
     HttpResponse* responseWithHttpInformation = createResponse();
     responseWithHttpInformation->setHttpInformation(httpInfo);
@@ -15,7 +15,7 @@ APIPOLLER::HttpResponse *APIPOLLER::HttpResponse::createResponseWithHttpInformat
 }
 
 
-void APIPOLLER::HttpResponse::setHttpInformation(const HTTP& httpInfo)
+void APIPOLLER::HttpResponse::setHttpInformation(const Http& httpInfo)
 {
     this->httpInfo = httpInfo;
 }

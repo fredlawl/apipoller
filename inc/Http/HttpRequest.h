@@ -1,7 +1,7 @@
 #ifndef APIPOLLER_HTTPREQUEST_H
 #define APIPOLLER_HTTPREQUEST_H
 
-#include "HTTP.h"
+#include "Http.h"
 
 namespace APIPOLLER {
     class HttpRequest;

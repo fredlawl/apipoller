@@ -1,6 +1,6 @@
 #include "../../inc/Http/CurlHttpRequest.h"
 #include "../../inc/Http/HttpResponse.h"
-#include "../../inc/Http/HTTP.h"
+#include "../../inc/Http/Http.h"
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {
@@ -81,7 +81,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
 
     HttpResponse* response = HttpResponse::createResponse();
     CURLcode curlResponseStatus = CURLE_OK;
-    HTTP httpResponseInformation;
+    Http httpResponseInformation;
 
     curl_easy_setopt(curlHandle, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curlHandle, CURLOPT_FOLLOWLOCATION, true);
@@ -101,7 +101,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
 
     curl_easy_getinfo(curlHandle, CURLINFO_RESPONSE_CODE, &httpResponseInformation.statusCode);
 
-    // todo: Figure out a way to get the HTTP info
+    // todo: Figure out a way to get the Http info
     response->setHttpInformation(httpResponseInformation);
 
     return response;
