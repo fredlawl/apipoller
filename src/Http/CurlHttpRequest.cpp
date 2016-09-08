@@ -80,6 +80,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
 
     HttpResponse* response = HttpResponse::createResponse();
     CURLcode curlResponseStatus = CURLE_OK;
+    long statusCode;
 
     curl_easy_setopt(curlHandle, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curlHandle, CURLOPT_FOLLOWLOCATION, true);
@@ -94,7 +95,13 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     curlResponseStatus = curl_easy_perform(curlHandle);
     if (curlResponseStatus != CURLE_OK) {
         std::cerr << "Request failed with message: " << curl_easy_strerror(curlResponseStatus) << std::endl;
+        return nullptr;
     }
+
+    curl_easy_getinfo(curlHandle, CURLINFO_RESPONSE_CODE, &statusCode);
+
+    // todo: Figure out a way to get the HTTP info
+    response->setHttpInformation("HTTP/1.1", statusCode, "OK");
 
     return response;
 }
