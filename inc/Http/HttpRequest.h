@@ -33,7 +33,7 @@ public:
     virtual HttpResponse* sendRequest(Method method, const String& url) = 0;
 
     inline void setEncoder(IEncoder* encoder) { this->encoder = encoder; };
-    inline bool hasEncoder() const { return (encoder == nullptr); };
+    inline bool hasEncoder() const { return (encoder != nullptr); };
 
     /**
      * HttpRequest.cpp

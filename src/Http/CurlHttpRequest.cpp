@@ -85,7 +85,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     String queryString = buildQueryString();
 
     if (method != Method::POST && !queryString.empty()) {
-        cleanedUrl.append("?", 1).append(queryString, queryString.size());
+        cleanedUrl.append("?", 1).append(queryString);
     }
 
     curl_easy_setopt(curlHandle, CURLOPT_URL, cleanedUrl.c_str());

@@ -24,7 +24,7 @@ APIPOLLER::settings_t* APIPOLLER::HttpRequest::encodeParameters() const
 
 APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
 {
-    String queryString;
+    String queryString = "";
     size_t counter = 0;
     settings_t* encodedParameters = ((settings_t*) &parameters);
 
@@ -34,14 +34,16 @@ APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
 
     for (auto parameter : *encodedParameters) {
         if (counter > 0) {
-            queryString.append('&', 1);
+            queryString.append("&", 1);
         }
 
-        queryString.append(parameter.first, parameter.first.size());
-        queryString.append('=', 1);
-        queryString.append(parameter.second, parameter.second.size());
+        queryString.append(parameter.first);
+        queryString.append("=", 1);
+        queryString.append(parameter.second);
         ++counter;
     }
+
+    std::cout << queryString << std::endl;
 
     return queryString;
 }
