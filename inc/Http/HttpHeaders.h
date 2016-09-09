@@ -13,10 +13,10 @@ public:
 
     bool isEmpty() const;
     inline bool contains(const String& headerKey) const;
-    inline String get(const String& headerKey) const;
+    String get(const String& headerKey) const;
     String getFormattedHeader(const String& headerKey) const;
-    inline void insert(const String& headerKey, const String& headerValue);
-    inline String remove(const String& headerKey);
+    void insert(const String& headerKey, const String& headerValue);
+    String remove(const String& headerKey);
     inline const unsigned long size() const;
 
     string_array_t getHeaderKeys() const;
