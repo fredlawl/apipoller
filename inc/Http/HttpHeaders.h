@@ -17,6 +17,10 @@ public:
 
     const string_array_t& getHeaderKeys() const;
 
+    String toString() const;
+
+    friend std::ostream& operator<< (std::ostream& os, const APIPOLLER::HttpHeaders& obj);
+
 private:
     settings_t headers;
 
