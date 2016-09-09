@@ -88,6 +88,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     setCurlMethod(method);
     setResponseHeaderWriter(response);
     setResponseBodyWriter(response);
+    setRequestHeaders();
 
     // ... do parameter encodings
     // ... fill-in headers
