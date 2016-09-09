@@ -33,7 +33,6 @@ APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
     }
 
     for (auto parameter : *encodedParameters) {
-
         if (counter > 0) {
             queryString.append('&', 1);
         }
@@ -43,8 +42,6 @@ APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
         queryString.append(parameter.second, parameter.second.size());
         ++counter;
     }
-
-    delete encodedParameters;
 
     return queryString;
 }
