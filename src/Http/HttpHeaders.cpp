@@ -1,6 +1,6 @@
 #include "../../inc/Http/HttpHeaders.h"
 
-std::ostream& operator<< (std::ostream& os, const APIPOLLER::HttpHeaders& httpHeaders)
+std::ostream& APIPOLLER::operator<< (std::ostream& os, const APIPOLLER::HttpHeaders& httpHeaders)
 {
     os << httpHeaders.toString() << std::endl;
     return os;
