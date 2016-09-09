@@ -11,11 +11,14 @@ class APIPOLLER::HttpHeaders
 {
 public:
 
-    inline const String& get(const String& headerKey) const;
+    inline bool isEmpty() const;
+    inline bool contains(const String& headerKey) const;
+    inline String get(const String& headerKey) const;
     inline void insert(const String& headerKey, const String& headerValue);
-    inline void remove(const String& headerKey);
+    inline String remove(const String& headerKey);
+    inline const unsigned long size() const;
 
-    const string_array_t& getHeaderKeys() const;
+    string_array_t getHeaderKeys() const;
 
     String toString() const;
 
