@@ -56,7 +56,7 @@ size_t APIPOLLER::CurlHandler::writeToSettings(void *contents, size_t sizeOfBloc
     String header = String((char *) contents, totalSize);
     settings_t *headers = ((settings_t *) settingsContainer);
 
-    StringArray parts = APIPOLLER::Utility::splitAtDelimiterOnce(header, ':');
+    string_array_t parts = APIPOLLER::Utility::splitAtDelimiterOnce(header, ':');
     if (parts.empty()) {
         return totalSize;
     }
