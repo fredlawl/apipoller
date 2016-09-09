@@ -46,10 +46,6 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const Strin
         return nullptr;
     }
 
-    const char* queryString = buildQueryString().c_str();
-    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDSIZE, ((long) strlen(queryString)));
-    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDS, queryString);
-
     return sendRequest(Method::POST, url);
 }
 
@@ -89,6 +85,10 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     setResponseHeaderWriter(response);
     setResponseBodyWriter(response);
     setRequestHeaders();
+
+    const char* queryString = buildQueryString().c_str();
+    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDSIZE, ((long) strlen(queryString)));
+    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDS, queryString);
 
     // ... do parameter encodings
     // ... fill-in headers
