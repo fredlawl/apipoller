@@ -1,6 +1,5 @@
 #include "../../inc/Http/CurlHttpRequest.h"
 #include "../../inc/Http/HttpResponse.h"
-#include "../../inc/Http/Http.h"
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {
@@ -185,4 +184,27 @@ bool APIPOLLER::CurlHttpRequest::allowWriteBody()
     }
 
     return true;
+}
+
+
+void APIPOLLER::CurlHttpRequest::setRequestHeaders() const
+{
+    if (headers.isEmpty()) {
+        return;
+    }
+
+    string_array_t headerKeys = headers.getHeaderKeys();
+    struct curl_slist* curlHeaders = nullptr;
+    String header;
+
+    for (size_t i = 0; i < headerKeys.size(); ++i) {
+        header = headers.getFormattedHeader(headerKeys[i]);
+
+        if (header.empty())
+            continue;
+
+        curlHeaders = curl_slist_append(curlHeaders, header.c_str());
+    }
+
+    curl_easy_setopt(curlHandle, CURLOPT_HTTPHEADER, curlHeaders);
 }

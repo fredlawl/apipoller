@@ -11,10 +11,10 @@ class APIPOLLER::HttpHeaders
 {
 public:
 
-    inline bool isEmpty() const;
+    bool isEmpty() const;
     inline bool contains(const String& headerKey) const;
     inline String get(const String& headerKey) const;
-    inline String getFormattedHeader(const String& headerKey) const;
+    String getFormattedHeader(const String& headerKey) const;
     inline void insert(const String& headerKey, const String& headerValue);
     inline String remove(const String& headerKey);
     inline const unsigned long size() const;

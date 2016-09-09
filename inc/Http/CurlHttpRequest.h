@@ -44,6 +44,7 @@ private:
     void setResponseBodyWriter(HttpResponse* response);
     void setResponseStreamWriter(HttpResponse* response) const;
     void setResponseToNothing() const;
+    void setRequestHeaders() const;
 
 };
 
