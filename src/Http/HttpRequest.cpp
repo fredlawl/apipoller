@@ -32,9 +32,9 @@ APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
             queryString.append('&', 1);
         }
 
-        queryString.append(parameter.first, strlen(parameter.first.c_str()));
+        queryString.append(parameter.first, parameter.first.size());
         queryString.append('=', 1);
-        queryString.append(parameter.second, strlen(parameter.second.c_str()));
+        queryString.append(parameter.second, parameter.second.size());
         ++counter;
     }
 
