@@ -46,6 +46,10 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const Strin
         return nullptr;
     }
 
+    const char* queryString = buildQueryString().c_str();
+    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDSIZE, ((long) strlen(queryString)));
+    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDS, queryString);
+
     return sendRequest(Method::POST, url);
 }
 
@@ -77,18 +81,19 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
     HttpResponse* response = HttpResponse::createResponse();
     CURLcode curlResponseStatus = CURLE_OK;
     Http httpResponseInformation;
+    String cleanedUrl = cleanUrl(url);
 
-    curl_easy_setopt(curlHandle, CURLOPT_URL, url.c_str());
+    if (method != Method::POST) {
+        cleanedUrl.append("?", 1).append(buildQueryString());
+    }
+
+    curl_easy_setopt(curlHandle, CURLOPT_URL, cleanedUrl.c_str());
     curl_easy_setopt(curlHandle, CURLOPT_FOLLOWLOCATION, true);
     curl_easy_setopt(curlHandle, CURLOPT_NOPROGRESS, 1L);
     setCurlMethod(method);
     setResponseHeaderWriter(response);
     setResponseBodyWriter(response);
     setRequestHeaders();
-
-    const char* queryString = buildQueryString().c_str();
-    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDSIZE, ((long) strlen(queryString)));
-    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDS, queryString);
 
     // ... do parameter encodings
     // ... fill-in headers
@@ -204,4 +209,16 @@ void APIPOLLER::CurlHttpRequest::setRequestHeaders() const
     }
 
     curl_easy_setopt(curlHandle, CURLOPT_HTTPHEADER, curlHeaders);
+}
+
+
+APIPOLLER::String APIPOLLER::CurlHttpRequest::cleanUrl(const String& url) const
+{
+    String cleanedUrl = url;
+    unsigned long found = cleanedUrl.find_first_of("?");
+
+    if (found == cleanedUrl.npos)
+        return cleanedUrl;
+
+    return cleanedUrl.erase(found, cleanedUrl.npos);
 }

@@ -8,6 +8,7 @@ namespace APIPOLLER {
     class HttpResponse;
 }
 
+// todo: Make this abstract by making the constructor protected
 class APIPOLLER::HttpResponse
 {
 public:

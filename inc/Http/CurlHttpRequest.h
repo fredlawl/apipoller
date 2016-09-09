@@ -46,6 +46,11 @@ private:
     void setResponseToNothing() const;
     void setRequestHeaders() const;
 
+    /**
+     * Assuming a perfectly valid url, trim all the query params.
+     */
+    String cleanUrl(const String& url) const;
+
 };
 
 #endif
