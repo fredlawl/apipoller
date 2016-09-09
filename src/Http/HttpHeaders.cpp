@@ -6,12 +6,13 @@ std::ostream& APIPOLLER::operator<< (std::ostream& os, const APIPOLLER::HttpHead
     return os;
 }
 
+
 APIPOLLER::String APIPOLLER::HttpHeaders::toString() const
 {
     String formattedHeaders;
 
     for (const auto& header : headers) {
-        formattedHeaders.append("[").append(header.first).append("] => ").append(header.second);
+        formattedHeaders.append("[").append(header.first).append("] => ").append(header.second).append("\n");
     }
 
     return formattedHeaders;
