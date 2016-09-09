@@ -11,10 +11,10 @@ class APIPOLLER::Utility
 {
 public:
 
-    inline static StringArray splitAtDelimiterOnce(const String& stringToParse, char delim)
+    inline static string_array_t splitAtDelimiterOnce(const String& stringToParse, char delim)
     {
         size_t firstFoundDelim = stringToParse.find_first_of(delim);
-        StringArray container;
+        string_array_t container;
 
         if (firstFoundDelim == String::npos) {
             return container;
