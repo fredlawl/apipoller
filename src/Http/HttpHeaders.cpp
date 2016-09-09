@@ -73,4 +73,20 @@ const unsigned long APIPOLLER::HttpHeaders::size() const
 }
 
 
+APIPOLLER::String APIPOLLER::HttpHeaders::getFormattedHeader(const String& headerKey) const
+{
+    String headerValue = get(headerKey);
+    String formattedHeader;
+
+    if (headerValue.empty()) {
+        return "";
+    }
+
+    formattedHeader = headerKey;
+    return formattedHeader.append(": ", 2).append(headerValue);
+}
+
+
+
+
 
