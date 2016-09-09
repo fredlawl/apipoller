@@ -11,10 +11,10 @@ class APIPOLLER::HttpHeaders
 {
 public:
     inline const String& get(const String& headerKey) const;
-    inline const String& insert(const String& headerKey, const String& headerValue);
-    void remove(const String& headerKey);
+    inline void insert(const String& headerKey, const String& headerValue);
+    inline void remove(const String& headerKey);
 
-    string_array_t getHeaderKeys() const;
+    const string_array_t& getHeaderKeys() const;
 
     // @todo Need to add something for iteration ...
 
