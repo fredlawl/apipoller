@@ -200,10 +200,6 @@ void APIPOLLER::CurlHttpRequest::setRequestHeaders() const
 
     for (size_t i = 0; i < headerKeys.size(); ++i) {
         header = headers.getFormattedHeader(headerKeys[i]);
-
-        if (header.empty())
-            continue;
-
         curlHeaders = curl_slist_append(curlHeaders, header.c_str());
     }
 
