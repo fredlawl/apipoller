@@ -2,7 +2,7 @@
 #include "../../inc/Encoders/IEncoder.h"
 
 
-APIPOLLER::settings_t *APIPOLLER::HttpRequest::encodeParameters() const
+APIPOLLER::settings_t* APIPOLLER::HttpRequest::encodeParameters() const
 {
     settings_t* queryParameters = nullptr;
     String encodedParameter;
