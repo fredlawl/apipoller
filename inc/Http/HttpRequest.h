@@ -2,6 +2,7 @@
 #define APIPOLLER_HTTPREQUEST_H
 
 #include "Http.h"
+#include "HttpHeaders.h"
 
 namespace APIPOLLER {
     class HttpRequest;
@@ -20,7 +21,7 @@ public:
     };
 
     settings_t parameters;
-    settings_t headers;
+    HttpHeaders headers;
 
     virtual ~HttpRequest() {};
 

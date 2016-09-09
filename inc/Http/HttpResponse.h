@@ -2,6 +2,7 @@
 #define APIPOLLER_HTTPRESPONSE_H
 
 #include "Http.h"
+#include "HttpHeaders.h"
 
 namespace APIPOLLER {
     class HttpResponse;
@@ -10,7 +11,7 @@ namespace APIPOLLER {
 class APIPOLLER::HttpResponse
 {
 public:
-    settings_t headers;
+    HttpHeaders headers;
     String body;
 
     static HttpResponse* createResponse();
