@@ -15,6 +15,7 @@ protected:
     }
 };
 
+
 TEST_F(STDLoggerTest, testOutputToSTDOUT) {
     testing::internal::CaptureStdout();
 
