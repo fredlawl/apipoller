@@ -19,4 +19,5 @@ else(LIBCURL_FOUND)
 endif(LIBCURL_FOUND)
 
 add_subdirectory(src)
+add_subdirectory(lib/googletest)
 add_subdirectory(test)
