@@ -43,8 +43,6 @@ APIPOLLER::String APIPOLLER::HttpRequest::buildQueryString() const
         ++counter;
     }
 
-    std::cout << queryString << std::endl;
-
     return queryString;
 }
 
