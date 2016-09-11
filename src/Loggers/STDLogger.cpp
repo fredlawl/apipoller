@@ -14,7 +14,7 @@ void APIPOLLER::STDLogger::logWarning(const String& message) const
 
 void APIPOLLER::STDLogger::logError(const String& message) const
 {
-
+    std::cerr << message << std::endl;
 }
 
 
