@@ -6,7 +6,6 @@ set(SOURCE_FILES
         Http/CurlHttpRequest.cpp
         Http/HttpRequest.cpp
         Http/HttpHeaders.cpp
-        Encoders/IEncoder.cpp
         Encoders/UrlEncoder.cpp
         Pollers/Poller.cpp
         CurlHandler.cpp
