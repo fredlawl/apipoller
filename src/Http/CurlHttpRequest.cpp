@@ -48,7 +48,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendPostRequest(const Strin
 
     const char* queryString = buildQueryString().c_str();
     curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDSIZE, ((long) strlen(queryString)));
-    curl_easy_setopt(curlHandle, CURLOPT_POSTFIELDS, queryString);
+    curl_easy_setopt(curlHandle, CURLOPT_COPYPOSTFIELDS, queryString);
 
     return sendRequest(Method::POST, url);
 }
