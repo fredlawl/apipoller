@@ -1,5 +1,5 @@
 #include "../../inc/Http/CurlHttpRequest.h"
-#include "../../inc/Http/HttpResponse.h"
+#include "../../inc/Http/CurlHttpResponse.h"
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {
@@ -78,7 +78,7 @@ APIPOLLER::HttpResponse* APIPOLLER::CurlHttpRequest::sendRequest(Method method, 
         return nullptr;
     }
 
-    HttpResponse* response = HttpResponse::createResponse();
+    HttpResponse* response = CurlHttpResponse::createResponse();
     CURLcode curlResponseStatus = CURLE_OK;
     Http httpResponseInformation;
     String cleanedUrl = cleanUrl(url);

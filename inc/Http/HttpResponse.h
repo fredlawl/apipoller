@@ -8,17 +8,13 @@ namespace APIPOLLER {
     class HttpResponse;
 }
 
-// todo: Make this abstract by making the constructor protected
+
 class APIPOLLER::HttpResponse
 {
 public:
     HttpHeaders headers;
     String body;
 
-    static HttpResponse* createResponse();
-    static HttpResponse* createResponseWithHttpInformation(const Http& httpInfo);
-
-    HttpResponse() { };
     virtual ~HttpResponse() { }
 
     inline long getStatusCode() { return this->httpInfo.statusCode; }
@@ -29,6 +25,8 @@ public:
 
 protected:
     Http httpInfo;
+
+    HttpResponse() {};
 
 };
 

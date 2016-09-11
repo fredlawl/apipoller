@@ -50,7 +50,10 @@ set(SOURCE_FILES
         inc/Pollers/IStreamReader.h
 
         src/Http/HttpResponse.cpp
-        inc/Utility.h)
+        inc/Utility.h
+
+        src/Http/CurlHttpResponse.cpp
+        inc/Http/CurlHttpResponse.h)
 add_executable(${BINARY_NAME} ${SOURCE_FILES})
 
 
