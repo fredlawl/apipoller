@@ -21,10 +21,10 @@ TEST_F(STDLoggerTest, testOutputToSTDOUT)
     testing::internal::CaptureStdout();
     logger->logMessage("This works");
 
-    const char* expectedCString = "This works\n";
-    const char* actualCString = testing::internal::GetCapturedStdout().c_str();
+    const char* expected = "This works\n";
+    const char* actual = testing::internal::GetCapturedStdout().c_str();
 
-    ASSERT_STREQ(expectedCString, actualCString);
+    ASSERT_STREQ(expected, actual);
 }
 
 
