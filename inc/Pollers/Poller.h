@@ -22,8 +22,8 @@ public:
     virtual bool testConnection() = 0;
     virtual bool reopenConnection() = 0;
 
-private:
-
+protected:
+    Poller() {}
 
 };
 
