@@ -18,3 +18,11 @@ protected:
         delete poller;
     }
 };
+
+
+TEST_F(TwitterPollerTest, testGetName)
+{
+    const char* actual = poller->getName().c_str();
+    const char* expected = "Twitter API Poller";
+    ASSERT_STREQ(expected, actual);
+}
