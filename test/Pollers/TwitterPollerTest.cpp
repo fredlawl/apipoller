@@ -6,19 +6,15 @@ class TwitterPollerTest : public ::testing::Test
 {
 protected:
     HttpRequestMock* httpRequest = nullptr;
+    APIPOLLER::TwitterPoller* poller = nullptr;
 
     virtual void SetUp() {
         httpRequest = new HttpRequestMock();
+        poller = new APIPOLLER::TwitterPoller(httpRequest);
     }
 
     virtual void TearDown() {
         delete httpRequest;
+        delete poller;
     }
 };
-
-
-TEST_F(TwitterPollerTest, testTwitterPollerAcceptsHttpResponse)
-{
-    APIPOLLER::TwitterPoller poller(httpRequest);
-    ASSERT_TRUE(true);
-}
