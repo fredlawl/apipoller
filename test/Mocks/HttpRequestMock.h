@@ -1,0 +1,8 @@
+//
+// Created by Frederick Lawler on 9/11/16.
+//
+
+#ifndef APIPOOLER_HTTPREQUESTMOCK_H
+#define APIPOOLER_HTTPREQUESTMOCK_H
+
+#endif //APIPOOLER_HTTPREQUESTMOCK_H
