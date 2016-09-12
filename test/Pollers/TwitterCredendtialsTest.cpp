@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "../../inc/Pollers/TwitterCredentials.h"
 
 class TwitterCredentialsTest : public ::testing::Test
 {
