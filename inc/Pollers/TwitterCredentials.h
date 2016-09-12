@@ -1,0 +1,8 @@
+//
+// Created by Frederick Lawler on 9/11/16.
+//
+
+#ifndef APIPOOLER_TWITTERCREDENTIALS_H
+#define APIPOOLER_TWITTERCREDENTIALS_H
+
+#endif //APIPOOLER_TWITTERCREDENTIALS_H
