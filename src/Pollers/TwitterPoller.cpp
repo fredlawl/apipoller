@@ -85,5 +85,5 @@ bool APIPOLLER::TwitterPoller::reopenConnection()
 
 APIPOLLER::String APIPOLLER::TwitterPoller::getName()
 {
-    return "Twitter Poller";
+    return "Twitter API Poller";
 }
