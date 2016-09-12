@@ -6,12 +6,14 @@
 namespace APIPOLLER {
     class TwitterPoller;
     class IEncoder;
+    class HttpRequest;
 }
 
 class APIPOLLER::TwitterPoller : public Poller
 {
 public:
     TwitterPoller(IEncoder* encoder);
+    TwitterPoller(HttpRequest* requestEngine);
     TwitterPoller();
     ~TwitterPoller();
 

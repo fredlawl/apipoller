@@ -1,6 +1,6 @@
 #include "../../inc/Pollers/TwitterPoller.h"
 #include "../../inc/Pollers/TwitterStreamReader.h"
-#include "../../inc/Http/CurlHttpRequest.h"
+#include "../../inc/Http/HttpRequest.h"
 
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
 
@@ -17,6 +17,12 @@ APIPOLLER::TwitterPoller::TwitterPoller(IEncoder* encoder)
 }
 
 
+APIPOLLER::TwitterPoller::TwitterPoller(HttpRequest* requestEngine)
+{
+
+}
+
+
 APIPOLLER::TwitterPoller::~TwitterPoller()
 {
 
@@ -25,14 +31,6 @@ APIPOLLER::TwitterPoller::~TwitterPoller()
 
 bool APIPOLLER::TwitterPoller::fetch()
 {
-    IStreamReader* twitterStreamReader = new TwitterStreamReader();
-    HttpRequest* requestEngine = CurlHttpRequest::createCurlHttpRequestWithStreamReader(twitterStreamReader);
-    requestEngine->setEncoder(encoder);
-
-    std::cout << "Fetching data" << std::endl;
-
-    delete twitterStreamReader;
-    delete requestEngine;
 
     return true;
 }
@@ -40,14 +38,8 @@ bool APIPOLLER::TwitterPoller::fetch()
 
 bool APIPOLLER::TwitterPoller::openConnection()
 {
-    CURLcode code;
-    CurlHandler::getInstance()->init(code);
     std::cout << "Open connection..." << std::endl;
-
-    // Set the o-auth timestamp
-    setOAuthTimestamp();
-
-    return (code == CURLE_OK);
+    return true;
 }
 
 
@@ -62,7 +54,7 @@ void APIPOLLER::TwitterPoller::setOAuthTimestamp()
 
 bool APIPOLLER::TwitterPoller::closeConnection()
 {
-    CurlHandler::getInstance()->destroy();
+
     return true;
 }
 
@@ -107,4 +99,3 @@ APIPOLLER::String APIPOLLER::TwitterPoller::getName()
 {
     return "Twitter Poller";
 }
-
