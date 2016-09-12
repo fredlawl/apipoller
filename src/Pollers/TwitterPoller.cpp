@@ -5,21 +5,9 @@
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
 
 
-APIPOLLER::TwitterPoller::TwitterPoller()
-{
-
-}
-
-
-APIPOLLER::TwitterPoller::TwitterPoller(IEncoder* encoder)
-{
-    this->encoder = encoder;
-}
-
-
 APIPOLLER::TwitterPoller::TwitterPoller(HttpRequest* requestEngine)
 {
-
+    this->requestEngine = requestEngine;
 }
 
 
