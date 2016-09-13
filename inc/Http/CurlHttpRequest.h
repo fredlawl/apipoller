@@ -56,7 +56,7 @@ private:
     IStreamReader* streamReader = nullptr;
     bool writeBody = true;
 
-    inline bool allowWriteBody();
+    inline bool toggleWriteBody();
     void setCurlMethod(Method method) const;
     void setResponseHeaderWriter(HttpResponse* response) const;
     void setResponseBodyWriter(HttpResponse* response);

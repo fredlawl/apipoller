@@ -132,7 +132,7 @@ void APIPOLLER::CurlHttpRequest::setResponseHeaderWriter(HttpResponse* response)
 
 void APIPOLLER::CurlHttpRequest::setResponseBodyWriter(HttpResponse* response)
 {
-    if (!allowWriteBody()) {
+    if (!toggleWriteBody()) {
         setResponseToNothing();
         return;
     }
@@ -177,7 +177,7 @@ void APIPOLLER::CurlHttpRequest::setCurlMethod(Method method) const
     }
 }
 
-bool APIPOLLER::CurlHttpRequest::allowWriteBody()
+bool APIPOLLER::CurlHttpRequest::toggleWriteBody()
 {
     if (!writeBody) {
         writeBody = true;
