@@ -1,4 +1,6 @@
-//
-// Created by Frederick Lawler on 9/13/16.
-//
+#include "Configuration/JsonConfigurationManager.h"
+
+APIPOLLER::Configuration* APIPOLLER::JsonConfigurationManager::loadFromFile(const String& path) {
+    return nullptr;
+}
 
