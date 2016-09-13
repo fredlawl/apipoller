@@ -8,16 +8,13 @@ using ::testing::Return;
 class TwitterPollerTest : public ::testing::Test
 {
 protected:
-    HttpRequestMock* httpRequest = nullptr;
     APIPOLLER::TwitterPoller* poller = nullptr;
 
     virtual void SetUp() {
-        httpRequest = new HttpRequestMock();
-        poller = new APIPOLLER::TwitterPoller(httpRequest);
+        poller = new APIPOLLER::TwitterPoller();
     }
 
     virtual void TearDown() {
-        delete httpRequest;
         delete poller;
     }
 };
@@ -53,6 +50,6 @@ TEST_F(TwitterPollerTest, testGetName)
 
 TEST_F(TwitterPollerTest, testFetch)
 {
-    EXPECT_CALL(*httpRequest, sendGetRequest("http://test.com")).Times(1);
+
     poller->fetch();
 }
