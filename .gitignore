@@ -338,4 +338,3 @@ Temporary Items
 
 # Ignore the build and lib dirs
 build
-lib/*

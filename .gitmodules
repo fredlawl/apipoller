@@ -2,3 +2,7 @@
 	path = lib/googletest
 	url = git@github.com:google/googletest.git
 	ignore = dirty
+[submodule "lib/jsoncpp"]
+	path = lib/jsoncpp
+	url = git@github.com:open-source-parsers/jsoncpp.git
+	ignore = dirty
