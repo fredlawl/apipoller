@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../Mocks/HttpRequestMock.h"
+#include "Mocks/HttpRequestMock.h"
 #include "Pollers/TwitterPoller.h"
 
 class TwitterPollerTest : public ::testing::Test
