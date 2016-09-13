@@ -20,7 +20,7 @@ APIPOLLER::TwitterPoller::~TwitterPoller()
 
 bool APIPOLLER::TwitterPoller::fetch()
 {
-
+    requestEngine->sendGetRequest("http://test.com");
     return true;
 }
 
@@ -47,7 +47,7 @@ void APIPOLLER::TwitterPoller::setOAuthTimestamp()
 
 bool APIPOLLER::TwitterPoller::closeConnection()
 {
-
+    CurlHandler::getInstance()->destroy();
     return true;
 }
 
