@@ -1,9 +1,7 @@
-#include "APIPoller.h"
 #include "Pollers/TwitterPoller.h"
 #include "Signal/SignalManager.h"
 #include "Signal/CloseCURLSignalHandler.h"
-#include "Encoders/UrlEncoder.h"
-#include "Http/CurlHttpRequest.h"
+#include "Configuration/JsonConfigurationManager.h"
 
 int main (int argc, char** argv)
 {
@@ -19,9 +17,10 @@ int main (int argc, char** argv)
     SignalManager::getInstance()->registerHandler(SIGABRT, &curlSignalHandler);
     SignalManager::getInstance()->registerHandler(SIGHUP, &curlSignalHandler);
 
-    UrlEncoder encoder;
-    CurlHttpRequest requestEngine;
-    Poller* twitter = new TwitterPoller(&requestEngine);
+    JsonConfigurationManager jsonConfigurationManager;
+    Configuration* configuration = jsonConfigurationManager.loadFromFile("");
+    Poller* twitter = new TwitterPoller(*configuration);
+    delete configuration;
 
     // Show application is running
     std::cout << "Running " << twitter->getName() << std::endl;
