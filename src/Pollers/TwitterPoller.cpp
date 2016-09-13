@@ -1,6 +1,7 @@
 #include "Pollers/TwitterPoller.h"
 #include "Pollers/TwitterStreamReader.h"
 #include "Http/HttpRequest.h"
+#include "CURLHandler.h"
 
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
 
@@ -26,8 +27,12 @@ bool APIPOLLER::TwitterPoller::fetch()
 
 bool APIPOLLER::TwitterPoller::openConnection()
 {
-    std::cout << "Open connection..." << std::endl;
-    return true;
+    CURLcode code;
+    if (!CurlHandler::getInstance()->init(code)) {
+        // todo: do something if error...
+    }
+
+    return (code == CURLE_OK);
 }
 
 
