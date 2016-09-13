@@ -5,14 +5,12 @@
 
 namespace APIPOLLER {
     class TwitterPoller;
-    class IEncoder;
-    class HttpRequest;
 }
 
 class APIPOLLER::TwitterPoller : public Poller
 {
 public:
-    TwitterPoller(HttpRequest* requestEngine);
+    TwitterPoller(const Configuration& configuration) : Poller(configuration) {};
     ~TwitterPoller();
 
     String getAuthString();
@@ -29,7 +27,6 @@ public:
 private:
     static String authString;
     settings_t credentials;
-    HttpRequest* requestEngine = nullptr;
 
     void setOAuthTimestamp();
 

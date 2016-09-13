@@ -6,12 +6,6 @@
 APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
 
 
-APIPOLLER::TwitterPoller::TwitterPoller(HttpRequest* requestEngine)
-{
-    this->requestEngine = requestEngine;
-}
-
-
 APIPOLLER::TwitterPoller::~TwitterPoller()
 {
 
@@ -20,7 +14,7 @@ APIPOLLER::TwitterPoller::~TwitterPoller()
 
 bool APIPOLLER::TwitterPoller::fetch()
 {
-    requestEngine->sendGetRequest("http://test.com");
+
     return true;
 }
 
