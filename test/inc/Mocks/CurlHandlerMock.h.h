@@ -1,0 +1,8 @@
+//
+// Created by Frederick Lawler on 9/12/16.
+//
+
+#ifndef APIPOOLER_CURLHANDLERMOCK_H_H
+#define APIPOOLER_CURLHANDLERMOCK_H_H
+
+#endif //APIPOOLER_CURLHANDLERMOCK_H_H
