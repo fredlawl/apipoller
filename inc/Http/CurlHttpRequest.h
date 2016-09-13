@@ -11,11 +11,29 @@ namespace APIPOLLER {
 class APIPOLLER::CurlHttpRequest : public APIPOLLER::HttpRequest
 {
 public:
+    static CurlHttpRequest* createCurlHttpRequest(IEncoder* encoder);
     static CurlHttpRequest* createCurlHttpRequestWithStreamReader(IStreamReader* streamReader);
-    static CurlHttpRequest* createCurlHttpRequest();
+    static CurlHttpRequest* createCurlHttpRequestWithEncoderAndStreamReader(IEncoder* encoder, IStreamReader* streamReader);
 
-    CurlHttpRequest();
-    CurlHttpRequest(IStreamReader* streamReader);
+    CurlHttpRequest()
+    {
+        open();
+    }
+
+    CurlHttpRequest(IStreamReader* streamReader) : streamReader(streamReader)
+    {
+        open();
+    }
+
+    CurlHttpRequest(IEncoder* encoder) : HttpRequest(encoder)
+    {
+        open();
+    }
+
+    CurlHttpRequest(IEncoder* encoder, IStreamReader* streamReader) : HttpRequest(encoder), streamReader(streamReader)
+    {
+        open();
+    }
 
     ~CurlHttpRequest();
 

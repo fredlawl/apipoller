@@ -1,18 +1,6 @@
 #include "Http/CurlHttpRequest.h"
 #include "Http/CurlHttpResponse.h"
 
-APIPOLLER::CurlHttpRequest::CurlHttpRequest()
-{
-    open();
-}
-
-
-APIPOLLER::CurlHttpRequest::CurlHttpRequest(IStreamReader* streamReader)
-{
-    this->streamReader = streamReader;
-    open();
-}
-
 
 APIPOLLER::CurlHttpRequest::~CurlHttpRequest()
 {
@@ -20,15 +8,21 @@ APIPOLLER::CurlHttpRequest::~CurlHttpRequest()
 }
 
 
-APIPOLLER::CurlHttpRequest *APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithStreamReader(IStreamReader *streamReader)
+APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequest(IEncoder* encoder)
+{
+    return new CurlHttpRequest(encoder);
+}
+
+
+APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithStreamReader(IStreamReader* streamReader)
 {
     return new CurlHttpRequest(streamReader);
 }
 
 
-APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequest()
+APIPOLLER::CurlHttpRequest* APIPOLLER::CurlHttpRequest::createCurlHttpRequestWithEncoderAndStreamReader(IEncoder* encoder, IStreamReader* streamReader)
 {
-    return new CurlHttpRequest();
+    return new CurlHttpRequest(encoder, streamReader);
 }
 
 
@@ -213,8 +207,7 @@ void APIPOLLER::CurlHttpRequest::setRequestHeaders() const
 }
 
 
-APIPOLLER::String APIPOLLER::CurlHttpRequest::cleanUrl(const String& url) const
-{
+APIPOLLER::String APIPOLLER::CurlHttpRequest::cleanUrl(const String& url) const {
     String cleanedUrl = url;
     unsigned long found = cleanedUrl.find_first_of("?");
 

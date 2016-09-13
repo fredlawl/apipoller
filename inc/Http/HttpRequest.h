@@ -49,6 +49,7 @@ protected:
     IEncoder* encoder = nullptr;
 
     HttpRequest() {};
+    HttpRequest(IEncoder* encoder) {};
 
     /**
      * Call to open a connection request resource.
