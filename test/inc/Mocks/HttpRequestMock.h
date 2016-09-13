@@ -13,7 +13,7 @@ public:
     MOCK_METHOD1(sendPostRequest, APIPOLLER::HttpResponse*(const APIPOLLER::String& url));
     MOCK_METHOD1(sendGetRequest, APIPOLLER::HttpResponse*(const APIPOLLER::String& url));
     MOCK_METHOD1(sendPutRequest, APIPOLLER::HttpResponse*(const APIPOLLER::String& url));
-    MOCK_METHOD1(APIPOLLER::HttpResponse*(const APIPOLLER::String& url));
+    MOCK_METHOD1(sendDeleteRequest, APIPOLLER::HttpResponse*(const APIPOLLER::String& url));
     MOCK_METHOD2(sendRequest, APIPOLLER::HttpResponse*(APIPOLLER::HttpRequest::Method method, const APIPOLLER::String& url));
     MOCK_CONST_METHOD0(encodeParameters, APIPOLLER::settings_t*());
     MOCK_CONST_METHOD0(buildQueryString, APIPOLLER::String());
