@@ -1,3 +1,4 @@
+#include "CURLHandler.h"
 #include "Http/CurlHttpRequest.h"
 #include "Http/CurlHttpResponse.h"
 

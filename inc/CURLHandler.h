@@ -27,7 +27,7 @@ public:
      *
      * @return size_t Bytes written
      */
-    static size_t writeToString(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *stringBuffer);
+    static size_t writeToString(void* contents, size_t sizeOfBlock, size_t numberOfBlocks, void* stringBuffer);
 
 
     /**
@@ -40,7 +40,7 @@ public:
      *
      * @return size_t Bytes written
      */
-    static size_t writeToSettings(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *settingsContainer);
+    static size_t writeToSettings(void* contents, size_t sizeOfBlock, size_t numberOfBlocks, void* settingsContainer);
 
 
     /**
@@ -53,7 +53,7 @@ public:
      *
      * @return size_t Bytes written
      */
-    static size_t writeToStreamReader(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *streamReader);
+    static size_t writeToStreamReader(void* contents, size_t sizeOfBlock, size_t numberOfBlocks, void* streamReader);
 
 
     /**
@@ -66,7 +66,7 @@ public:
      *
      * @return size_t Bytes written
      */
-    static size_t writeToNothing(void *contents, size_t sizeOfBlock, size_t numberOfBlocks, void *doNotCast);
+    static size_t writeToNothing(void* contents, size_t sizeOfBlock, size_t numberOfBlocks, void* doNotCast);
 
 
     bool init(CURLcode& curlCode);

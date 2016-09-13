@@ -12,6 +12,5 @@
 #include <vector>
 
 #include <curl/curl.h>
-#include "CurlHandler.h"
 
 #endif
