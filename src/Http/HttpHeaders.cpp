@@ -1,4 +1,4 @@
-#include "../../inc/Http/HttpHeaders.h"
+#include "Http/HttpHeaders.h"
 
 std::ostream& APIPOLLER::operator<< (std::ostream& os, const APIPOLLER::HttpHeaders& httpHeaders)
 {

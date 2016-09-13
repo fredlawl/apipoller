@@ -1,7 +1,7 @@
 #ifndef APIPOOLER_ILOGGER_H
 #define APIPOOLER_ILOGGER_H
 
-#include "../APIPoller.h"
+#include "APIPoller.h"
 
 namespace APIPOLLER {
     class ILogger;

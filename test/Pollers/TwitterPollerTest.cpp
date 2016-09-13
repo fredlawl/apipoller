@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "../Mocks/HttpRequestMock.h"
-#include "../../inc/Pollers/TwitterPoller.h"
+#include "Pollers/TwitterPoller.h"
 
 class TwitterPollerTest : public ::testing::Test
 {

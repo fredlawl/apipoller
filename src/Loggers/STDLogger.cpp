@@ -1,4 +1,4 @@
-#include "../../inc/Loggers/STDLogger.h"
+#include "Loggers/STDLogger.h"
 
 void APIPOLLER::STDLogger::logMessage(const APIPOLLER::String& message) const
 {

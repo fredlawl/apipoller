@@ -1,5 +1,5 @@
 
-#include "../../inc/Encoders/UrlEncoder.h"
+#include "Encoders/UrlEncoder.h"
 
 const APIPOLLER::characterset_t APIPOLLER::UrlEncoder::SAFE_CHARACTERS = {
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',

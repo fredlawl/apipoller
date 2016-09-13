@@ -1,7 +1,7 @@
 #ifndef APIPOLLER_ISIGNALHANDLER_H
 #define APIPOLLER_ISIGNALHANDLER_H
 
-#include "../APIPoller.h"
+#include "APIPoller.h"
 
 namespace APIPOLLER {
     class ISignalHandler;

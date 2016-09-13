@@ -2,8 +2,8 @@
 #define APIPOOLER_HTTPREQUESTMOCK_H
 
 #include "gmock/gmock.h"
-#include "../../inc/Http/HttpRequest.h"
-#include "../../inc/Http/HttpResponse.h"
+#include "Http/HttpRequest.h"
+#include "Http/HttpResponse.h"
 
 class HttpRequestMock : public APIPOLLER::HttpRequest
 {

@@ -1,5 +1,5 @@
-#include "../../inc/Http/CurlHttpRequest.h"
-#include "../../inc/Http/CurlHttpResponse.h"
+#include "Http/CurlHttpRequest.h"
+#include "Http/CurlHttpResponse.h"
 
 APIPOLLER::CurlHttpRequest::CurlHttpRequest()
 {

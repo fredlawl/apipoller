@@ -1,5 +1,5 @@
-#include "../../inc/Http/HttpRequest.h"
-#include "../../inc/Encoders/IEncoder.h"
+#include "Http/HttpRequest.h"
+#include "Encoders/IEncoder.h"
 
 
 APIPOLLER::settings_t* APIPOLLER::HttpRequest::encodeParameters() const

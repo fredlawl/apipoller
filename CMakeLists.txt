@@ -8,6 +8,8 @@ set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "/usr/lib")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 set(LIBRARIES "")
 
+include_directories(inc)
+
 set(LIBRARIES ${LIBRARIES} rabbitmq)
 
 find_package(LibCURL REQUIRED)

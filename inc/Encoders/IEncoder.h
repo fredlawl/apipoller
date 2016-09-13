@@ -1,7 +1,7 @@
 #ifndef APIPOLLER_IENCODER_H
 #define APIPOLLER_IENCODER_H
 
-#include "../APIPoller.h"
+#include "APIPoller.h"
 
 namespace APIPOLLER {
     class IEncoder;

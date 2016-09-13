@@ -1,5 +1,5 @@
 
-#include "../../inc/Signal/SignalManager.h"
+#include "Signal/SignalManager.h"
 
 APIPOLLER::SignalManager* APIPOLLER::SignalManager::instance = nullptr;
 APIPOLLER::ISignalHandler* APIPOLLER::SignalManager::handlers[NSIG];

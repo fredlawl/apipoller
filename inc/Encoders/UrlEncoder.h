@@ -1,7 +1,7 @@
 #ifndef APIPOLLER_URLENCODER_H
 #define APIPOLLER_URLENCODER_H
 
-#include "../Encoders/IEncoder.h"
+#include "Encoders/IEncoder.h"
 
 namespace APIPOLLER {
     class UrlEncoder;

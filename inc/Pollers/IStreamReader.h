@@ -1,7 +1,7 @@
 #ifndef APIPOOLER_ISTREAMREADER_H
 #define APIPOOLER_ISTREAMREADER_H
 
-#include "./../APIPoller.h"
+#include "APIPoller.h"
 
 namespace APIPOLLER {
     class IStreamReader;

@@ -1,8 +1,9 @@
-#include "../inc/APIPoller.h"
-#include "../inc/Pollers/TwitterPoller.h"
-#include "../inc/Signal/SignalManager.h"
-#include "../inc/Signal/CloseCURLSignalHandler.h"
-#include "../inc/Encoders/UrlEncoder.h"
+#include "APIPoller.h"
+#include "Pollers/TwitterPoller.h"
+#include "Signal/SignalManager.h"
+#include "Signal/CloseCURLSignalHandler.h"
+#include "Encoders/UrlEncoder.h"
+#include "Http/CurlHttpRequest.h"
 
 int main (int argc, char** argv)
 {
@@ -19,7 +20,8 @@ int main (int argc, char** argv)
     SignalManager::getInstance()->registerHandler(SIGHUP, &curlSignalHandler);
 
     UrlEncoder encoder;
-    Poller* twitter = new TwitterPoller(&encoder);
+    CurlHttpRequest requestEngine;
+    Poller* twitter = new TwitterPoller(&requestEngine);
 
     // Show application is running
     std::cout << "Running " << twitter->getName() << std::endl;

@@ -1,7 +1,7 @@
 #ifndef APIPOOLER_HEADERS_H
 #define APIPOOLER_HEADERS_H
 
-#include "../APIPoller.h"
+#include "APIPoller.h"
 
 namespace APIPOLLER {
     class HttpHeaders;

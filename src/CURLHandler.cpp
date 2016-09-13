@@ -1,6 +1,6 @@
-#include "../inc/CurlHandler.h"
-#include "../inc/Pollers/IStreamReader.h"
-#include "../inc/Utility.h"
+#include "CurlHandler.h"
+#include "Pollers/IStreamReader.h"
+#include "Utility.h"
 
 APIPOLLER::CurlHandler* APIPOLLER::CurlHandler::instance = nullptr;
 
