@@ -20,7 +20,6 @@ int main (int argc, char** argv)
     JsonConfigurationManager jsonConfigurationManager;
     Configuration* configuration = jsonConfigurationManager.loadFromFile("");
     Poller* twitter = new TwitterPoller(*configuration);
-    delete configuration;
 
     // Show application is running
     std::cout << "Running " << twitter->getName() << std::endl;
@@ -29,6 +28,7 @@ int main (int argc, char** argv)
         std::cout << "Connection closed" << std::endl;
     }
 
+    delete configuration;
     delete twitter;
 
     return EXIT_SUCCESS;
