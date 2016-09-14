@@ -8,7 +8,10 @@ set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "/usr/lib")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 set(LIBRARIES "")
 
-include_directories(inc)
+include_directories(
+    "${CMAKE_CURRENT_SOURCE_DIR}/inc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/lib/jsoncpp/include"
+)
 
 set(LIBRARIES ${LIBRARIES} rabbitmq)
 
@@ -20,6 +23,10 @@ else(LIBCURL_FOUND)
     message(FATAL_ERROR "Could not find the CURL library and development files.")
 endif(LIBCURL_FOUND)
 
-add_subdirectory(src)
 add_subdirectory(lib/googletest)
+add_subdirectory(lib/jsoncpp/src/lib_json)
+
+set(LIBRARIES ${LIBRARIES} jsoncpp_lib_static)
+
+add_subdirectory(src)
 add_subdirectory(test)
