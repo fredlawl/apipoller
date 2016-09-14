@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Configuration/Configuration.h"
+#include "Configuration/JsonConfiguration.h"
 #include "Pollers/TwitterPoller.h"
 #include "Mocks/HttpRequestMock.h"
 #include "Mocks/CurlHandlerMock.h"
@@ -12,8 +12,8 @@ protected:
     APIPOLLER::TwitterPoller* poller = nullptr;
 
     virtual void SetUp() {
-        APIPOLLER::Configuration someconfig;
-        poller = new APIPOLLER::TwitterPoller(someconfig);
+        APIPOLLER::JsonConfiguration someconfig;
+        poller = new APIPOLLER::TwitterPoller(&someconfig);
     }
 
     virtual void TearDown() {

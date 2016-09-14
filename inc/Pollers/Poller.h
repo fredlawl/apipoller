@@ -1,10 +1,11 @@
 #ifndef APIPOLLER_POLLER_H
 #define APIPOLLER_POLLER_H
 
-#include "Configuration/Configuration.h"
+#include "APIPoller.h"
 
 namespace APIPOLLER {
     class Poller;
+    class Configuration;
 }
 
 class APIPOLLER::Poller
@@ -23,9 +24,9 @@ public:
     virtual bool reopenConnection() = 0;
 
 protected:
-    Configuration configuration;
+    Configuration* config;
 
-    Poller(const Configuration& configuration) : configuration(configuration) {}
+    Poller(Configuration* configuration) : config(configuration) {}
 
 };
 

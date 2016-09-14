@@ -4,7 +4,19 @@
 #include "APIPoller.h"
 
 namespace APIPOLLER {
-    typedef settings_t Configuration;
+    class Configuration;
 }
+
+class APIPOLLER::Configuration
+{
+public:
+    virtual ~Configuration() {}
+
+    virtual Configuration* get(const String& key) const = 0;
+    virtual void set(const String& key, const String& value) = 0;
+
+protected:
+    Configuration() {}
+};
 
 #endif

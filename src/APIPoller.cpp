@@ -19,7 +19,7 @@ int main (int argc, char** argv)
 
     JsonConfigurationManager jsonConfigurationManager;
     Configuration* configuration = jsonConfigurationManager.loadFromFile("");
-    Poller* twitter = new TwitterPoller(*configuration);
+    Poller* twitter = new TwitterPoller(configuration);
 
     // Show application is running
     std::cout << "Running " << twitter->getName() << std::endl;

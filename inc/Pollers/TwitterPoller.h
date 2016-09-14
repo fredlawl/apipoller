@@ -10,7 +10,7 @@ namespace APIPOLLER {
 class APIPOLLER::TwitterPoller : public Poller
 {
 public:
-    TwitterPoller(const Configuration& configuration) : Poller(configuration) {};
+    TwitterPoller(Configuration* configuration) : Poller(configuration) {};
     ~TwitterPoller();
 
     String getAuthString();
