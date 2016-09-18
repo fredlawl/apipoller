@@ -5,6 +5,8 @@
 
 namespace APIPOLLER {
     class TwitterHttpStreamPoller;
+    class IEncoder;
+    class IStreamReader;
 }
 
 class APIPOLLER::TwitterHttpStreamPoller : public Poller
