@@ -7,9 +7,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <unordered_map>
+#include <map>
 #include <unordered_set>
 #include <csignal>
 #include <vector>
+#include <utility>
 
 #include <curl/curl.h>
 

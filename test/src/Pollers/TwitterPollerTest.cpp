@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "Configuration/JsonConfiguration.h"
-#include "Pollers/TwitterPoller.h"
+#include "Pollers/TwitterHttpStreamPoller.h"
 #include "Mocks/HttpRequestMock.h"
 #include "Mocks/CurlHandlerMock.h"
 
@@ -9,11 +9,11 @@ using ::testing::Return;
 class TwitterPollerTest : public ::testing::Test
 {
 protected:
-    APIPOLLER::TwitterPoller* poller = nullptr;
+    APIPOLLER::TwitterHttpStreamPoller* poller = nullptr;
 
     virtual void SetUp() {
         APIPOLLER::JsonConfiguration someconfig;
-        poller = new APIPOLLER::TwitterPoller(&someconfig);
+        poller = new APIPOLLER::TwitterHttpStreamPoller(&someconfig);
     }
 
     virtual void TearDown() {

@@ -1,6 +1,6 @@
 
 set(SOURCE_FILES
-        Pollers/TwitterPoller.cpp
+        Pollers/TwitterHttpStreamPoller.cpp
         Signal/CloseCURLSignalHandler.cpp
         Signal/SignalManager.cpp
         Http/CurlHttpRequest.cpp

@@ -1,25 +1,25 @@
-#include "Pollers/TwitterPoller.h"
+#include "Pollers/TwitterHttpStreamPoller.h"
 #include "Pollers/TwitterStreamReader.h"
 #include "Http/HttpRequest.h"
 #include "CURLHandler.h"
 
-APIPOLLER::String APIPOLLER::TwitterPoller::authString = "";
+APIPOLLER::String APIPOLLER::TwitterHttpStreamPoller::authString = "";
 
 
-APIPOLLER::TwitterPoller::~TwitterPoller()
+APIPOLLER::TwitterHttpStreamPoller::~TwitterHttpStreamPoller()
 {
 
 }
 
 
-bool APIPOLLER::TwitterPoller::fetch()
+bool APIPOLLER::TwitterHttpStreamPoller::fetch()
 {
 
     return true;
 }
 
 
-bool APIPOLLER::TwitterPoller::openConnection()
+bool APIPOLLER::TwitterHttpStreamPoller::openConnection()
 {
     CURLcode code;
     if (!CurlHandler::getInstance()->init(code)) {
@@ -30,7 +30,7 @@ bool APIPOLLER::TwitterPoller::openConnection()
 }
 
 
-void APIPOLLER::TwitterPoller::setOAuthTimestamp()
+void APIPOLLER::TwitterHttpStreamPoller::setOAuthTimestamp()
 {
     APIPOLLER::timepoint_t now = std::chrono::system_clock::now();
     std::chrono::system_clock::duration dur = now.time_since_epoch();
@@ -39,21 +39,21 @@ void APIPOLLER::TwitterPoller::setOAuthTimestamp()
 }
 
 
-bool APIPOLLER::TwitterPoller::closeConnection()
+bool APIPOLLER::TwitterHttpStreamPoller::closeConnection()
 {
     CurlHandler::getInstance()->destroy();
     return true;
 }
 
 
-bool APIPOLLER::TwitterPoller::testConnection()
+bool APIPOLLER::TwitterHttpStreamPoller::testConnection()
 {
     std::cout << "Testing connection" << std::endl;
     return true;
 }
 
 
-void APIPOLLER::TwitterPoller::buildAuthString()
+void APIPOLLER::TwitterHttpStreamPoller::buildAuthString()
 {
     authString = "";
     uint8_t count = 0;
@@ -69,20 +69,20 @@ void APIPOLLER::TwitterPoller::buildAuthString()
 }
 
 
-APIPOLLER::String APIPOLLER::TwitterPoller::getAuthString()
+APIPOLLER::String APIPOLLER::TwitterHttpStreamPoller::getAuthString()
 {
     return authString;
 }
 
 
-bool APIPOLLER::TwitterPoller::reopenConnection()
+bool APIPOLLER::TwitterHttpStreamPoller::reopenConnection()
 {
     closeConnection();
     return openConnection();
 }
 
 
-APIPOLLER::String APIPOLLER::TwitterPoller::getName()
+APIPOLLER::String APIPOLLER::TwitterHttpStreamPoller::getName()
 {
     return "Twitter API Poller";
 }

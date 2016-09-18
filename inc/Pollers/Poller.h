@@ -26,7 +26,9 @@ public:
 protected:
     Configuration* config;
 
+    Poller() {}
     Poller(Configuration* configuration) : config(configuration) {}
+
 
 };
 

@@ -4,14 +4,15 @@
 #include "Poller.h"
 
 namespace APIPOLLER {
-    class TwitterPoller;
+    class TwitterHttpStreamPoller;
 }
 
-class APIPOLLER::TwitterPoller : public Poller
+class APIPOLLER::TwitterHttpStreamPoller : public Poller
 {
 public:
-    TwitterPoller(Configuration* configuration) : Poller(configuration) {};
-    ~TwitterPoller();
+    TwitterHttpStreamPoller(Configuration* configuration) : Poller(configuration) {};
+    TwitterHttpStreamPoller() {};
+    ~TwitterHttpStreamPoller();
 
     String getAuthString();
     String getName();

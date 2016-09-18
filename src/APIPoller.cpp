@@ -1,7 +1,10 @@
-#include "Pollers/TwitterPoller.h"
+#include <Pollers/FactoryRegistry.h>
+#include "Pollers/TwitterHttpStreamPoller.h"
 #include "Signal/SignalManager.h"
 #include "Signal/CloseCURLSignalHandler.h"
 #include "Configuration/JsonConfigurationManager.h"
+#include "Pollers/PollerFactoryCreator.h"
+#include "Loggers/STDLogger.h"
 
 int main (int argc, char** argv)
 {
@@ -17,19 +20,34 @@ int main (int argc, char** argv)
     SignalManager::getInstance()->registerHandler(SIGABRT, &curlSignalHandler);
     SignalManager::getInstance()->registerHandler(SIGHUP, &curlSignalHandler);
 
-    JsonConfigurationManager jsonConfigurationManager;
-    Configuration* configuration = jsonConfigurationManager.loadFromFile("");
-    Poller* twitter = new TwitterPoller(configuration);
+    ILogger* systemLogger = new STDLogger();
 
-    // Show application is running
-    std::cout << "Running " << twitter->getName() << std::endl;
+    // todo: move these to some sort of settings object
+    String pollerService = "twitter";
+    String pollerServiceType = "stream";
+    String pollerName;
 
-    if (!twitter->run()) {
-        std::cout << "Connection closed" << std::endl;
+    PollerFactoryCreator factoryCreator;
+    PollerFactory* pollerFactory = nullptr;
+    Poller* poller = nullptr;
+
+    // Grab a service
+    if ((pollerFactory = factoryCreator.getFactory(pollerService)) == nullptr) {
+        systemLogger->logError("Service \"" + pollerService + "\" does not exist in the system.");
+        return EXIT_FAILURE;
     }
 
-    delete configuration;
-    delete twitter;
+    // Grab a service type
+    if ((poller = factoryCreator.getType(pollerFactory, pollerServiceType)) == nullptr) {
+        systemLogger->logError("The service type \"" + pollerServiceType + "\" does not exist for \"" + pollerService + "\".");
+        return EXIT_FAILURE;
+    }
+
+    pollerName = poller->getName();
+    systemLogger->logMessage(pollerName + " has started.");
+    if (!poller->run()) {
+        systemLogger->logMessage(pollerName + " stopped.");
+    }
 
     return EXIT_SUCCESS;
 }
