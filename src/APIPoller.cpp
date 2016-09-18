@@ -1,8 +1,6 @@
-#include <Pollers/FactoryRegistry.h>
 #include "Pollers/TwitterHttpStreamPoller.h"
 #include "Signal/SignalManager.h"
 #include "Signal/CloseCURLSignalHandler.h"
-#include "Configuration/JsonConfigurationManager.h"
 #include "Pollers/PollerFactoryCreator.h"
 #include "Loggers/STDLogger.h"
 
