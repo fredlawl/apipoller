@@ -10,7 +10,7 @@ namespace APIPOLLER {
 class APIPOLLER::PollerFactoryCreator
 {
 public:
-    inline PollerFactory* getFactory(const String& factoryType) const
+    PollerFactory* getFactory(const String& factoryType) const
     {
         if (factoryType.compare("twitter") == 0) {
             return new TwitterFactory();
@@ -20,7 +20,7 @@ public:
     }
 
 
-    inline Poller* getType(PollerFactory* factory, const String& pollerType) const
+    Poller* getType(PollerFactory* factory, const String& pollerType) const
     {
         if (pollerType.compare("http") == 0) {
             return factory->createHttpPoller();
@@ -32,8 +32,6 @@ public:
 
         return nullptr;
     }
-
-
 };
 
 #endif
