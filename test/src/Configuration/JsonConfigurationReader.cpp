@@ -5,21 +5,26 @@
 class JsonConfigurationReaderTest : public ::testing::Test
 {
 protected:
-    JsonConfigurationReader* configReader;
+    APIPOLLER::JsonConfigurationReader* configReader;
 
     virtual void SetUp()
     {
-        Json::Reader jsonReader;
-        configReader = new JsonConfigurationReader
+        Json::Reader* jsonReader = new Json::Reader;
+        configReader = new APIPOLLER::JsonConfigurationReader(jsonReader);
     }
 
     virtual  void TearDown()
     {
-
+        delete configReader;
     }
 };
 
-TEST_F(JsonConfigurationReader, testLoadFromFile)
+TEST_F(JsonConfigurationReaderTest, testNonexistantFileReturnsNull)
 {
+    Json::Value* actual = configReader->loadFromFile("/this/file/does/not/exist");
+    Json::Value* expected = nullptr;
 
+    ASSERT_EQ(expected, actual);
+
+    delete actual;
 }
