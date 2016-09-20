@@ -3,7 +3,7 @@ set(SOURCE_FILES
         TwitterPoller/HttpStream/TwitterHttpStreamPoller.cpp
         Signal/CloseCURLSignalHandler.cpp
         Signal/SignalManager.cpp
-        Http/CurlHttpRequest.cpp
+        Http/Curl/CurlHttpRequest.cpp
         Http/HttpRequest.cpp
         Http/HttpHeaders.cpp
         Encoders/UrlEncoder.cpp
@@ -11,7 +11,7 @@ set(SOURCE_FILES
         CurlHandler.cpp
         TwitterPoller/HttpStream/TwitterStreamReader.cpp
         Http/HttpResponse.cpp
-        Http/CurlHttpResponse.cpp
+        Http/Curl/CurlHttpResponse.cpp
         Loggers/STDLogger.cpp)
 
 add_library(APIPOLLER ${SOURCE_FILES})

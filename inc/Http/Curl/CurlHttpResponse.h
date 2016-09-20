@@ -1,7 +1,7 @@
 #ifndef APIPOOLER_CURLHTTPRESPONSE_H
 #define APIPOOLER_CURLHTTPRESPONSE_H
 
-#include "HttpResponse.h"
+#include "Http/HttpResponse.h"
 
 namespace APIPOLLER {
     class CurlHttpResponse;

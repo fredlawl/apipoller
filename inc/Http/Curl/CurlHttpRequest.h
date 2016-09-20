@@ -1,7 +1,7 @@
 #ifndef APIPOLLER_CURLHTTPREQUEST_H
 #define APIPOLLER_CURLHTTPREQUEST_H
 
-#include "HttpRequest.h"
+#include "Http/HttpRequest.h"
 
 namespace APIPOLLER {
     class CurlHttpRequest;

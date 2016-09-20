@@ -1,6 +1,6 @@
 #include "CURLHandler.h"
-#include "Http/CurlHttpRequest.h"
-#include "Http/CurlHttpResponse.h"
+#include "Http/Curl/CurlHttpRequest.h"
+#include "Http/Curl/CurlHttpResponse.h"
 
 
 APIPOLLER::CurlHttpRequest::~CurlHttpRequest()

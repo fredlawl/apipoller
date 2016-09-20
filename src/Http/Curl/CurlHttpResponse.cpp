@@ -1,4 +1,4 @@
-#include "Http/CurlHttpResponse.h"
+#include "Http/Curl/CurlHttpResponse.h"
 
 APIPOLLER::HttpResponse* APIPOLLER::CurlHttpResponse::createResponse()
 {
