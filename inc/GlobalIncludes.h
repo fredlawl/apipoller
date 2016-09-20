@@ -12,6 +12,7 @@
 #include <csignal>
 #include <vector>
 #include <utility>
+#include <fstream>
 
 #include <curl/curl.h>
 

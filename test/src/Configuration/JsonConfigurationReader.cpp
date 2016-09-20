@@ -19,12 +19,30 @@ protected:
     }
 };
 
-TEST_F(JsonConfigurationReaderTest, testNonexistantFileReturnsNull)
+TEST_F(JsonConfigurationReaderTest, testNonexistantFileReturnsNullptr)
 {
     Json::Value* actual = configReader->loadFromFile("/this/file/does/not/exist");
     Json::Value* expected = nullptr;
 
     ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(JsonConfigurationReaderTest, testNonJSONFileReturnsNullptr)
+{
+    Json::Value* actual = configReader->loadFromFile("../test/CMAKELists.txt");
+    Json::Value* expected = nullptr;
+
+    ASSERT_EQ(expected, actual);
+}
+
+
+TEST_F(JsonConfigurationReaderTest, testJsonFileParses)
+{
+    Json::Value* actual = configReader->loadFromFile("../test/files/goodJsonFile.json");
+    Json::Value* expected = nullptr;
+
+    ASSERT_NE(expected, actual);
 
     delete actual;
 }
