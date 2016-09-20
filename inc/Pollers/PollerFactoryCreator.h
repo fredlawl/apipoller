@@ -1,7 +1,7 @@
 #ifndef APIPOOLER_POLLERCREATOR_H
 #define APIPOOLER_POLLERCREATOR_H
 
-#include "TwitterFactory.h"
+#include "TwitterPoller/TwitterFactory.h"
 
 namespace APIPOLLER {
     class PollerFactoryCreator;

@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
-#include "Configuration/JsonConfiguration.h"
-#include "Pollers/TwitterHttpStreamPoller.h"
+#include "TwitterPoller/HttpStream/TwitterHttpStreamPoller.h"
 #include "Mocks/HttpRequestMock.h"
 #include "Mocks/CurlHandlerMock.h"
 
@@ -12,7 +11,6 @@ protected:
     APIPOLLER::TwitterHttpStreamPoller* poller = nullptr;
 
     virtual void SetUp() {
-        APIPOLLER::JsonConfiguration someconfig;
         poller = new APIPOLLER::TwitterHttpStreamPoller();
     }
 
@@ -25,6 +23,7 @@ protected:
 TEST_F(TwitterHttpStreamPollerTest, testFetch)
 {
     HttpRequestMock httpRequestMock;
+
 
     poller->fetch();
 }

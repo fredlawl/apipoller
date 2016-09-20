@@ -1,5 +1,5 @@
-#include "Pollers/TwitterHttpStreamPoller.h"
-#include "Pollers/TwitterStreamReader.h"
+#include "TwitterPoller/HttpStream/TwitterHttpStreamPoller.h"
+#include "TwitterPoller/HttpStream/TwitterStreamReader.h"
 #include "Http/HttpRequest.h"
 #include "CURLHandler.h"
 
@@ -84,5 +84,5 @@ bool APIPOLLER::TwitterHttpStreamPoller::reopenConnection()
 
 APIPOLLER::String APIPOLLER::TwitterHttpStreamPoller::getName()
 {
-    return "Twitter API Poller";
+    return "TwitterPoller API Poller";
 }

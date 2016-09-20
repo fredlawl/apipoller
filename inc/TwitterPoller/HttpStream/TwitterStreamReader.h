@@ -1,7 +1,7 @@
 #ifndef APIPOOLER_TWITTERSTREAMREADER_H
 #define APIPOOLER_TWITTERSTREAMREADER_H
 
-#include "IStreamReader.h"
+#include "Pollers/IStreamReader.h"
 
 namespace APIPOLLER {
     class TwitterStreamReader;

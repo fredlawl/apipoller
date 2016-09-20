@@ -1,7 +1,8 @@
 #ifndef APIPOLLER_TWITTERPOLLER_H
 #define APIPOLLER_TWITTERPOLLER_H
 
-#include "Poller.h"
+#include "Pollers/Poller.h"
+#include "TwitterHttpStreamConfiguration.h"
 
 namespace APIPOLLER {
     class TwitterHttpStreamPoller;
@@ -12,7 +13,7 @@ namespace APIPOLLER {
 class APIPOLLER::TwitterHttpStreamPoller : public Poller
 {
 public:
-    TwitterHttpStreamPoller(Configuration* configuration) : Poller(configuration) {};
+    TwitterHttpStreamPoller(const TwitterHttpStreamConfiguration& configuration) {};
     TwitterHttpStreamPoller() {};
     ~TwitterHttpStreamPoller();
 
@@ -29,6 +30,7 @@ public:
 
 private:
     static String authString;
+    TwitterHttpStreamConfiguration configuration;
     settings_t credentials;
 
     void setOAuthTimestamp();
