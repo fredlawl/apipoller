@@ -7,8 +7,8 @@
 
 namespace APIPOLLER {
     typedef struct {
-        TwitterConfiguration twitterCredentials;
-        HttpRequestConfiguration requestConfiguration;
+        TwitterConfiguration* twitterCredentials;
+        HttpRequestConfiguration* requestConfiguration;
         int16_t reconnectAttempts;
     } TwitterHttpStreamConfiguration;
 }

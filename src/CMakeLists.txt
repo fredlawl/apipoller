@@ -12,7 +12,8 @@ set(SOURCE_FILES
         TwitterPoller/HttpStream/TwitterStreamReader.cpp
         Http/HttpResponse.cpp
         Http/Curl/CurlHttpResponse.cpp
-        Loggers/STDLogger.cpp)
+        Loggers/STDLogger.cpp
+        Configuration/JsonConfigurationReader.cpp)
 
 add_library(APIPOLLER ${SOURCE_FILES})
 add_executable(${BINARY_NAME} APIPoller.cpp)
