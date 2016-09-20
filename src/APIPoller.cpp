@@ -1,4 +1,3 @@
-#include "TwitterPoller/HttpStream/TwitterHttpStreamPoller.h"
 #include "Signal/SignalManager.h"
 #include "Signal/CloseCURLSignalHandler.h"
 #include "Pollers/PollerFactoryCreator.h"
