@@ -1,7 +1,11 @@
+#include <Pollers/PollerConfiguration.h>
 #include "Signal/SignalManager.h"
 #include "Signal/CloseCURLSignalHandler.h"
 #include "Pollers/PollerFactoryCreator.h"
 #include "Loggers/STDLogger.h"
+#include "Configuration/JsonConfigurationReader.h"
+#include "Mappers/MapPollerConfiguration.h"
+#include "json/json.h"
 
 int main (int argc, char** argv)
 {
@@ -17,30 +21,42 @@ int main (int argc, char** argv)
     SignalManager::getInstance()->registerHandler(SIGABRT, &curlSignalHandler);
     SignalManager::getInstance()->registerHandler(SIGHUP, &curlSignalHandler);
 
+    // Declare system logger
     ILogger* systemLogger = new STDLogger();
 
-    // todo: move these to some sort of settings object
-    String pollerService = "twitter";
-    String pollerServiceType = "stream";
-    String pollerName;
+    // Load in app configuration file
+    String configPath = "../configurations/test.json";
+    Json::Reader jsonReader;
+    JsonConfigurationReader configReader(&jsonReader);
+    Json::Value* globalConfiguration = nullptr;
+    if ( (globalConfiguration = configReader.loadFromFile(configPath)) == nullptr) {
+        systemLogger->logError("Unable to load configuration file at path \"" + configPath + "\"");
+    }
 
+    // Create poller configuration
+    PollerConfiguration pollerConfig = MapPollerConfiguration::map(globalConfiguration);
+
+    // Delete global json configuration after it's been mapped out
+    delete globalConfiguration;
+
+    // Initiate Poller
     PollerFactoryCreator factoryCreator;
     PollerFactory* pollerFactory = nullptr;
     Poller* poller = nullptr;
 
-    // Grab a service
-    if ((pollerFactory = factoryCreator.getFactory(pollerService)) == nullptr) {
-        systemLogger->logError("Service \"" + pollerService + "\" does not exist in the system.");
+    // Grab a poller
+    if ((pollerFactory = factoryCreator.getFactory(pollerConfig.poller)) == nullptr) {
+        systemLogger->logError("Service \"" + pollerConfig.poller + "\" does not exist in the system.");
         return EXIT_FAILURE;
     }
 
-    // Grab a service type
-    if ((poller = factoryCreator.getType(pollerFactory, pollerServiceType)) == nullptr) {
-        systemLogger->logError("The service type \"" + pollerServiceType + "\" does not exist for \"" + pollerService + "\".");
+    // Grab a poller type
+    if ((poller = factoryCreator.getType(pollerFactory, pollerConfig.type)) == nullptr) {
+        systemLogger->logError("The service type \"" + pollerConfig.poller + "\" does not exist for \"" + pollerConfig.type + "\".");
         return EXIT_FAILURE;
     }
 
-    pollerName = poller->getName();
+    String pollerName = poller->getName();
     systemLogger->logMessage(pollerName + " has started.");
     if (!poller->run()) {
         systemLogger->logMessage(pollerName + " stopped.");
