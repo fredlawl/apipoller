@@ -1,11 +1,12 @@
 #include <Pollers/PollerConfiguration.h>
-#include "Signal/SignalManager.h"
-#include "Signal/CloseCURLSignalHandler.h"
-#include "Pollers/PollerFactoryCreator.h"
-#include "Loggers/STDLogger.h"
-#include "Configuration/JsonConfigurationReader.h"
-#include "Mappers/MapPollerConfiguration.h"
-#include "json/json.h"
+#include <Signal/SignalManager.h>
+#include <Signal/CloseCURLSignalHandler.h>
+#include <Pollers/PollerFactoryCreator.h>
+#include <Loggers/STDLogger.h>
+#include <Configuration/JsonConfigurationReader.h>
+#include <Pollers/Mappers/PollerConfigurationJsonMapper.h>
+#include <Http/Mappers/HttpRequestConfigurationJsonMapper.h>
+#include <Http/HttpRequestConfiguration.h>
 
 int main (int argc, char** argv)
 {
@@ -33,8 +34,14 @@ int main (int argc, char** argv)
         systemLogger->logError("Unable to load configuration file at path \"" + configPath + "\"");
     }
 
-    // Create poller configuration
-    PollerConfiguration pollerConfig = MapPollerConfiguration::map(globalConfiguration);
+    PollerConfigurationJsonMapper pollerConfigMapper;
+    auto pollerConfig = pollerConfigMapper.from(globalConfiguration);
+
+//    HttpRequestConfigurationJsonMapper requestMapper;
+//    Json::Value requestConfig = globalConfiguration->get("request", "");
+//    auto httpRequestConfig = requestMapper.from(&requestConfig);
+//
+//    systemLogger->logMessage(httpRequestConfig.url);
 
     // Delete global json configuration after it's been mapped out
     delete globalConfiguration;
