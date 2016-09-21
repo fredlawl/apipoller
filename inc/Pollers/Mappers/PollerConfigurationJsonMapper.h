@@ -9,11 +9,11 @@ namespace APIPOLLER
     class PollerConfigurationJsonMapper : public JsonDataMapper<PollerConfiguration>
     {
     public:
-        PollerConfiguration from(Json::Value* json) const
+        PollerConfiguration from(const Json::Value& json) const
         {
             PollerConfiguration config;
-            config.poller = json->get("poller", "").asString();
-            config.type = json->get("type", "").asString();
+            config.poller = json["poller"].asString();
+            config.type = json["type"].asString();
             return config;
         }
     };

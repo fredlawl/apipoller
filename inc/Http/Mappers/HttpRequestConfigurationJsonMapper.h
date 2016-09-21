@@ -9,10 +9,10 @@ namespace APIPOLLER
     class HttpRequestConfigurationJsonMapper : public JsonDataMapper<HttpRequestConfiguration>
     {
     public:
-        HttpRequestConfiguration from(Json::Value* json) const
+        HttpRequestConfiguration from(const Json::Value& json) const
         {
             HttpRequestConfiguration config;
-            config.url = json->get("url", "").asString();
+            config.url = json["url"].asString();
             return config;
         }
     };
