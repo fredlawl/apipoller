@@ -1,4 +1,11 @@
 {
   "poller": "twitter",
-  "type": "stream"
+  "type": "stream",
+  "request": {
+    "url": "http://httpbin.org/get",
+    "method": "GET",
+    "queryParameters": {
+      "show_env": 1
+    }
+  }
 }
