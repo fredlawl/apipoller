@@ -37,10 +37,8 @@ int main (int argc, char** argv)
     PollerConfigurationJsonMapper pollerConfigMapper;
     auto pollerConfig = pollerConfigMapper.from(*globalConfiguration);
 
-//    HttpRequestConfigurationJsonMapper requestMapper;
-//    auto httpRequestConfig = requestMapper.from(globalConfiguration->get("request", ""));
-//
-//    systemLogger->logMessage(httpRequestConfig.url);
+    HttpRequestConfigurationJsonMapper requestMapper;
+    auto httpRequestConfig = requestMapper.from(globalConfiguration->get("request", ""));
 
     // Delete global json configuration after it's been mapped out
     delete globalConfiguration;
