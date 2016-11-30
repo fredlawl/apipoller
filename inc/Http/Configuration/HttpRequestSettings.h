@@ -2,14 +2,14 @@
 #define APIPOOLER_HTTPREQUESTCONFIGURATION_H
 
 #include "APIPoller.h"
-#include "HttpRequest.h"
+#include "Http/HttpRequest.h"
 
 namespace APIPOLLER {
     typedef struct {
         String url;
         HttpRequest::Method method;
         settings_t parameters;
-    } HttpRequestConfiguration;
+    } HttpRequestSettings;
 }
 
 #endif

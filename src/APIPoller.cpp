@@ -5,8 +5,8 @@
 #include <Loggers/STDLogger.h>
 #include <Configuration/JsonConfigurationReader.h>
 #include <Pollers/Mappers/PollerConfigurationJsonMapper.h>
-#include <Http/Mappers/HttpRequestConfigurationJsonMapper.h>
-#include <Http/HttpRequestConfiguration.h>
+#include <Http/Mappers/HttpRequestSettingsJsonMapper.h>
+#include <Http/Configuration/HttpRequestSettings.h>
 
 int main (int argc, char** argv)
 {
@@ -37,8 +37,8 @@ int main (int argc, char** argv)
     PollerConfigurationJsonMapper pollerConfigMapper;
     auto pollerConfig = pollerConfigMapper.from(*globalConfiguration);
 
-    HttpRequestConfigurationJsonMapper requestMapper;
-    auto httpRequestConfig = requestMapper.from(globalConfiguration->get("request", ""));
+    HttpRequestSettingsJsonMapper requestMapper;
+    auto httpRequestConfig = requestMapper.from(globalConfiguration->get("http", ""));
 
     // Delete global json configuration after it's been mapped out
     delete globalConfiguration;
@@ -49,14 +49,14 @@ int main (int argc, char** argv)
     Poller* poller = nullptr;
 
     // Grab a poller
-    if ((pollerFactory = factoryCreator.getFactory(pollerConfig.poller)) == nullptr) {
-        systemLogger->logError("Service \"" + pollerConfig.poller + "\" does not exist in the system.");
+    if ((pollerFactory = factoryCreator.getFactory(pollerConfig->poller)) == nullptr) {
+        systemLogger->logError("Service \"" + pollerConfig->poller + "\" does not exist in the system.");
         return EXIT_FAILURE;
     }
 
     // Grab a poller type
-    if ((poller = factoryCreator.getType(pollerFactory, pollerConfig.type)) == nullptr) {
-        systemLogger->logError("The service type \"" + pollerConfig.poller + "\" does not exist for \"" + pollerConfig.type + "\".");
+    if ((poller = factoryCreator.getType(pollerFactory, pollerConfig->type)) == nullptr) {
+        systemLogger->logError("The service type \"" + pollerConfig->poller + "\" does not exist for \"" + pollerConfig->type + "\".");
         return EXIT_FAILURE;
     }
 

@@ -10,7 +10,7 @@ namespace APIPOLLER {
     {
     public:
         virtual ~JsonDataMapper() {}
-        virtual Configuration from(const Json::Value& json) const = 0;
+        virtual Configuration* from(const Json::Value& json) const = 0;
 
     protected:
         JsonDataMapper() {}
