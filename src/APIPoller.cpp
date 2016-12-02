@@ -1,4 +1,4 @@
-#include <Pollers/PollerConfiguration.h>
+#include <Pollers/Configuration/PollerSettings.h>
 #include <Signal/SignalManager.h>
 #include <Signal/CloseCURLSignalHandler.h>
 #include <Pollers/PollerFactoryCreator.h>

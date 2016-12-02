@@ -2,7 +2,7 @@
 #define APIPOOLER_DATAMAPPER_H
 
 #include "json/json.h"
-#include "Pollers/PollerConfiguration.h"
+#include "Pollers/Configuration/PollerSettings.h"
 
 namespace APIPOLLER {
     template<typename Source, typename Destination>

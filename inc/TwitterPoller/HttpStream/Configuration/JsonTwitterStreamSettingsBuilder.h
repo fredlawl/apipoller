@@ -31,6 +31,7 @@ public:
 private:
     TwitterHttpStreamSettings* settings = new TwitterHttpStreamSettings();
     const Json::Value* jsonNode = nullptr;
+
     DataMapper<Json::Value, HttpRequestSettings>* httpSettingsMapper = new HttpRequestSettingsJsonMapper();
 };
 
