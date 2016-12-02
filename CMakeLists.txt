@@ -26,7 +26,7 @@ endif(LIBCURL_FOUND)
 add_subdirectory(lib/googletest)
 add_subdirectory(lib/jsoncpp/src/lib_json)
 
-set(LIBRARIES ${LIBRARIES} jsoncpp_lib_static)
+set(LIBRARIES ${LIBRARIES} jsoncpp)
 
 add_subdirectory(src)
 add_subdirectory(test)
