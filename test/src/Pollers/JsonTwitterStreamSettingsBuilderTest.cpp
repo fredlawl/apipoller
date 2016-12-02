@@ -38,8 +38,8 @@ TEST_F(JsonTwitterStreamSettingsBuilderTest, testBuilder)
     expected.requestConfiguration.method = HttpRequest::Method::GET;
 
     settings_t settings;
-//    expected.requestConfiguration->parameters = settings;
-//    expected.requestConfiguration->parameters.insert(std::make_pair<String, String>("show_env", "1"));
+    expected.requestConfiguration.parameters = settings;
+    expected.requestConfiguration.parameters.insert(std::make_pair<String, String>("show_env", "1"));
 
     delete builder;
     delete actual;
