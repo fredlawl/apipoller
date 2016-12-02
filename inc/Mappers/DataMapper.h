@@ -5,15 +5,15 @@
 #include "Pollers/PollerConfiguration.h"
 
 namespace APIPOLLER {
-    template<typename Configuration>
-    class JsonDataMapper
+    template<typename Source, typename Desintation>
+    class DataMapper
     {
     public:
-        virtual ~JsonDataMapper() {}
-        virtual Configuration* from(const Json::Value& json) const = 0;
+        virtual ~DataMapper() {}
+        virtual Desintation* from(const Source& json) const = 0;
 
     protected:
-        JsonDataMapper() {}
+        DataMapper() {}
     };
 }
 

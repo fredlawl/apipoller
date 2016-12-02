@@ -34,8 +34,8 @@ TEST_F(JsonTwitterStreamSettingsBuilderTest, testBuilder)
     TwitterHttpStreamSettings* actual = builder->withHttpSettings()->build();
 
     TwitterHttpStreamSettings expected;
-    expected.requestConfiguration->url = "http://httpbin.org/get";
-    expected.requestConfiguration->method = HttpRequest::Method::GET;
+    expected.requestConfiguration.url = "http://httpbin.org/get";
+    expected.requestConfiguration.method = HttpRequest::Method::GET;
 
     settings_t settings;
 //    expected.requestConfiguration->parameters = settings;

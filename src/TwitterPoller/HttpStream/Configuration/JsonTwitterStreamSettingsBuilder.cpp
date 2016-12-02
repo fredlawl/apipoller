@@ -11,8 +11,10 @@ APIPOLLER::JsonTwitterStreamSettingsBuilder* APIPOLLER::JsonTwitterStreamSetting
     if (node.empty())
         return this;
 
-    settings->requestConfiguration = httpSettingsMapper->from(node);
+    HttpRequestSettings* requestSettings = httpSettingsMapper->from(node);
+    settings->requestConfiguration = *requestSettings;
 
+    delete requestSettings;
     return this;
 }
 

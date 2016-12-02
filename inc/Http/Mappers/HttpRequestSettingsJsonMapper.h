@@ -1,12 +1,12 @@
 #ifndef APIPOOLER_HTTPREQUESTSETTINGSJSONMAPPER_H
 #define APIPOOLER_HTTPREQUESTSETTINGSJSONMAPPER_H
 
-#include <Mappers/JsonDataMapper.h>
+#include <Mappers/DataMapper.h>
 #include <Http/Configuration/HttpRequestSettings.h>
 
 namespace APIPOLLER
 {
-    class HttpRequestSettingsJsonMapper : public JsonDataMapper<HttpRequestSettings>
+    class HttpRequestSettingsJsonMapper : public DataMapper<Json::Value, HttpRequestSettings>
     {
     public:
         HttpRequestSettings* from(const Json::Value& json) const

@@ -3,7 +3,7 @@
 
 #include "Http/Mappers/HttpRequestSettingsJsonMapper.h"
 #include "Configuration/BaseSettingsBuilder.h"
-#include "Mappers/JsonDataMapper.h"
+#include "Mappers/DataMapper.h"
 #include "Http/Configuration/HttpRequestSettings.h"
 #include "TwitterHttpStreamSettings.h"
 #include "Http/Configuration/IHttpSettingsBuilder.h"
@@ -31,7 +31,7 @@ public:
 private:
     TwitterHttpStreamSettings* settings = new TwitterHttpStreamSettings();
     const Json::Value* jsonNode = nullptr;
-    JsonDataMapper<HttpRequestSettings>* httpSettingsMapper = new HttpRequestSettingsJsonMapper();
+    DataMapper<Json::Value, HttpRequestSettings>* httpSettingsMapper = new HttpRequestSettingsJsonMapper();
 };
 
 #endif
