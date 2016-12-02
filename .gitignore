@@ -280,6 +280,7 @@ cmake_install.cmake
 install_manifest.txt
 CTestTestfile.cmake
 cmake-build-debug
+*.cbp
 ### OSX template
 *.DS_Store
 .AppleDouble
