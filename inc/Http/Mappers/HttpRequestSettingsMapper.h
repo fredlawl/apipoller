@@ -6,7 +6,7 @@
 
 namespace APIPOLLER
 {
-    class HttpRequestSettingsJsonMapper : public DataMapper<Json::Value, HttpRequestSettings>
+    class HttpRequestSettingsMapper : public DataMapper<Json::Value, HttpRequestSettings>
     {
     public:
         HttpRequestSettings* from(const Json::Value& json) const

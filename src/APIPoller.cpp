@@ -5,7 +5,7 @@
 #include <Loggers/STDLogger.h>
 #include <Configuration/JsonConfigurationReader.h>
 #include <Pollers/Mappers/PollerConfigurationJsonMapper.h>
-#include <Http/Mappers/HttpRequestSettingsJsonMapper.h>
+#include <Http/Mappers/HttpRequestSettingsMapper.h>
 #include <Http/Configuration/HttpRequestSettings.h>
 
 int main (int argc, char** argv)
@@ -37,7 +37,7 @@ int main (int argc, char** argv)
     PollerConfigurationJsonMapper pollerConfigMapper;
     auto pollerConfig = pollerConfigMapper.from(*globalConfiguration);
 
-    HttpRequestSettingsJsonMapper requestMapper;
+    HttpRequestSettingsMapper requestMapper;
     auto httpRequestConfig = requestMapper.from(globalConfiguration->get("http", ""));
 
     // Delete global json configuration after it's been mapped out

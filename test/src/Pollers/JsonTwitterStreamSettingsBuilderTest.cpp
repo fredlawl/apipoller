@@ -3,13 +3,13 @@
 #include "gtest/gtest.h"
 #include "json/json.h"
 #include "Configuration/JsonConfigurationReader.h"
-#include "TwitterPoller/HttpStream/Configuration/JsonTwitterStreamSettingsBuilder.h"
+#include "TwitterPoller/HttpStream/Configuration/TwitterStreamSettingsBuilder.h"
 
 class JsonTwitterStreamSettingsBuilderTest : public ::testing::Test
 {
 protected:
     APIPOLLER::JsonConfigurationReader* configReader;
-    APIPOLLER::JsonTwitterStreamSettingsBuilder* builder;
+    APIPOLLER::TwitterStreamSettingsBuilder* builder;
 
     virtual void SetUp()
     {
@@ -29,7 +29,7 @@ TEST_F(JsonTwitterStreamSettingsBuilderTest, testBuilder)
 {
     using namespace APIPOLLER;
     Json::Value* config = configReader->loadFromFile("../test/files/testSettings.json");
-    builder = new JsonTwitterStreamSettingsBuilder(config);
+    builder = new TwitterStreamSettingsBuilder(config);
 
     TwitterHttpStreamSettings* actual = builder->withHttpSettings()->build();
 

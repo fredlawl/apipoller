@@ -3,11 +3,11 @@
 
 #include "APIPoller.h"
 #include "Http/Configuration/HttpRequestSettings.h"
-#include "TwitterSettings.h"
+#include "TwitterPoller/Configuration/TwitterSettings.h"
 
 namespace APIPOLLER {
     typedef struct {
-        TwitterSettings twitterCredentials;
+        TwitterSettings twitterConfiguration;
         HttpRequestSettings requestConfiguration;
         int16_t reconnectAttempts;
     } TwitterHttpStreamSettings;

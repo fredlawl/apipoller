@@ -1,11 +1,11 @@
 #include <json/json.h>
-#include "TwitterPoller/HttpStream/Configuration/JsonTwitterStreamSettingsBuilder.h"
+#include "TwitterPoller/HttpStream/Configuration/TwitterStreamSettingsBuilder.h"
 
-APIPOLLER::JsonTwitterStreamSettingsBuilder::JsonTwitterStreamSettingsBuilder(Json::Value* json) {
+APIPOLLER::TwitterStreamSettingsBuilder::TwitterStreamSettingsBuilder(Json::Value* json) {
     jsonNode = json;
 }
 
-APIPOLLER::JsonTwitterStreamSettingsBuilder* APIPOLLER::JsonTwitterStreamSettingsBuilder::withHttpSettings()
+APIPOLLER::TwitterStreamSettingsBuilder* APIPOLLER::TwitterStreamSettingsBuilder::withHttpSettings()
 {
     Json::Value node = jsonNode->get("http", "");
     if (node.empty())
@@ -18,7 +18,21 @@ APIPOLLER::JsonTwitterStreamSettingsBuilder* APIPOLLER::JsonTwitterStreamSetting
     return this;
 }
 
-APIPOLLER::TwitterHttpStreamSettings* APIPOLLER::JsonTwitterStreamSettingsBuilder::build()
+APIPOLLER::TwitterStreamSettingsBuilder* APIPOLLER::TwitterStreamSettingsBuilder::withTwitterSettings()
+{
+    Json::Value node = jsonNode->get("twitter", "");
+    if (node.empty())
+        return this;
+
+    TwitterSettings* twitterSettings = twitterSettingsMapper->from(node);
+    settings->twitterConfiguration = *twitterSettings;
+
+    delete twitterSettings;
+
+    return this;
+}
+
+APIPOLLER::TwitterHttpStreamSettings* APIPOLLER::TwitterStreamSettingsBuilder::build()
 {
     return settings;
 }

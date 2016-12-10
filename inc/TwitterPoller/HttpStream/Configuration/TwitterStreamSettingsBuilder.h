@@ -1,7 +1,9 @@
 #ifndef APIPOOLER_JSONTWITTERSTREAMSETTINGSBUILDER_H
 #define APIPOOLER_JSONTWITTERSTREAMSETTINGSBUILDER_H
 
-#include "Http/Mappers/HttpRequestSettingsJsonMapper.h"
+#include <TwitterPoller/Configuration/ITwitterSettingsBuilder.h>
+#include <TwitterPoller/Mappers/TwitterSettingsMapper.h>
+#include "Http/Mappers/HttpRequestSettingsMapper.h"
 #include "Configuration/BaseSettingsBuilder.h"
 #include "Mappers/DataMapper.h"
 #include "Http/Configuration/HttpRequestSettings.h"
@@ -9,22 +11,25 @@
 #include "Http/Configuration/IHttpSettingsBuilder.h"
 
 namespace APIPOLLER {
-    class JsonTwitterStreamSettingsBuilder;
+    class TwitterStreamSettingsBuilder;
 }
 
-class APIPOLLER::JsonTwitterStreamSettingsBuilder :
+class APIPOLLER::TwitterStreamSettingsBuilder :
         BaseSettingsBuilder<TwitterHttpStreamSettings>,
-        IHttpSettingsBuilder<JsonTwitterStreamSettingsBuilder>
+        IHttpSettingsBuilder<TwitterStreamSettingsBuilder>,
+        ITwitterSettingsBuilder<TwitterStreamSettingsBuilder>
 {
 public:
-    JsonTwitterStreamSettingsBuilder(Json::Value* json);
+    TwitterStreamSettingsBuilder(Json::Value* json);
 
-    ~JsonTwitterStreamSettingsBuilder()
+    ~TwitterStreamSettingsBuilder()
     {
         delete httpSettingsMapper;
+        delete twitterSettingsMapper;
     }
 
-    JsonTwitterStreamSettingsBuilder* withHttpSettings();
+    TwitterStreamSettingsBuilder* withHttpSettings();
+    TwitterStreamSettingsBuilder* withTwitterSettings();
 
     TwitterHttpStreamSettings* build();
 
@@ -32,7 +37,8 @@ private:
     TwitterHttpStreamSettings* settings = new TwitterHttpStreamSettings();
     const Json::Value* jsonNode = nullptr;
 
-    DataMapper<Json::Value, HttpRequestSettings>* httpSettingsMapper = new HttpRequestSettingsJsonMapper();
+    DataMapper<Json::Value, HttpRequestSettings>* httpSettingsMapper = new HttpRequestSettingsMapper();
+    DataMapper<Json::Value, TwitterSettings>* twitterSettingsMapper = new TwitterSettingsMapper();
 };
 
 #endif
