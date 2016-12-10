@@ -14,7 +14,7 @@ namespace APIPOLLER
         {
             TwitterSettings* config = new TwitterSettings;
             config->consumerKey = json["consumerKey"].asString();
-            config->consumerKey = json["consumerSecret"].asString();
+            config->consumerSecret = json["consumerSecret"].asString();
             return config;
         }
     };

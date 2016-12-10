@@ -25,10 +25,9 @@ APIPOLLER::TwitterStreamSettingsBuilder* APIPOLLER::TwitterStreamSettingsBuilder
         return this;
 
     TwitterSettings* twitterSettings = twitterSettingsMapper->from(node);
-    settings->twitterConfiguration = *twitterSettings;
+    settings->twitter = *twitterSettings;
 
     delete twitterSettings;
-
     return this;
 }
 
