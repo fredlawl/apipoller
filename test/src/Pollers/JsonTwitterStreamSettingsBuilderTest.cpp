@@ -4,7 +4,7 @@
 #include "gtest/gtest.h"
 #include "json/json.h"
 #include "Configuration/JsonConfigurationReader.h"
-#include "TwitterPoller/HttpStream/Configuration/TwitterStreamSettingsBuilder.h"
+#include <TwitterPoller/HttpStream/Configuration/TwitterStreamSettingsBuilder.h>
 
 class JsonTwitterStreamSettingsBuilderTest : public ::testing::Test
 {
