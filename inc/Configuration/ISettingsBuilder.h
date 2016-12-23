@@ -1,17 +1,17 @@
-#ifndef APIPOOLER_ISETTINGSBUILDERDIRECTOR_H
-#define APIPOOLER_ISETTINGSBUILDERDIRECTOR_H
+#ifndef APIPOOLER_ISETTINGSBUILDER_H
+#define APIPOOLER_ISETTINGSBUILDER_H
 
 namespace APIPOLLER
 {
     template <typename SettingsProduct>
-    class ISettingsBuilderDirector
+    class ISettingsBuilder
     {
     public:
-        virtual ~ISettingsBuilderDirector() {}
-        virtual SettingsProduct* build() const = 0;
+        virtual ~ISettingsBuilder() {}
+        virtual SettingsProduct* build() = 0;
 
     protected:
-        ISettingsBuilderDirector() {};
+        ISettingsBuilder() {};
     };
 }
 

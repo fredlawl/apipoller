@@ -4,7 +4,7 @@
 #include <TwitterPoller/Configuration/ITwitterSettingsBuilder.h>
 #include <TwitterPoller/Mappers/TwitterSettingsMapper.h>
 #include "Http/Mappers/HttpRequestSettingsMapper.h"
-#include "Configuration/BaseSettingsBuilder.h"
+#include "Configuration/ISettingsBuilder.h"
 #include "Mappers/DataMapper.h"
 #include "Http/Configuration/HttpRequestSettings.h"
 #include "TwitterHttpStreamSettings.h"
@@ -15,7 +15,7 @@ namespace APIPOLLER {
 }
 
 class APIPOLLER::TwitterStreamSettingsBuilder :
-        BaseSettingsBuilder<TwitterHttpStreamSettings>,
+        ISettingsBuilder<TwitterHttpStreamSettings>,
         IHttpSettingsBuilder<TwitterStreamSettingsBuilder>,
         ITwitterSettingsBuilder<TwitterStreamSettingsBuilder>
 {

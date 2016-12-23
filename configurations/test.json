@@ -1,6 +1,10 @@
 {
   "poller": "twitter",
   "type": "stream",
+  "twitter": {
+    "consumerKey": "thisiskey",
+    "consumerSecret": "thisissecret"
+  },
   "http": {
     "url": "http://httpbin.org/get",
     "method": "GET",

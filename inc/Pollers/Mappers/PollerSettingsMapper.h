@@ -1,12 +1,12 @@
-#ifndef APIPOOLER_POLLERCONFIGURATIONJSONMAPPER_H
-#define APIPOOLER_POLLERCONFIGURATIONJSONMAPPER_H
+#ifndef APIPOOLER_POLLERMAPPER_H
+#define APIPOOLER_POLLERMAPPER_H
 
 #include <Mappers/DataMapper.h>
 #include <Pollers/Configuration/PollerSettings.h>
 
 namespace APIPOLLER
 {
-    class PollerConfigurationJsonMapper : public DataMapper<Json::Value, PollerSettings>
+    class PollerSettingsMapper : public DataMapper<Json::Value, PollerSettings>
     {
     public:
         PollerSettings* from(const Json::Value& json) const
