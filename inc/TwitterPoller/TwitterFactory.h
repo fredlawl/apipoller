@@ -1,14 +1,14 @@
 #ifndef APIPOOLER_TWITTERFACTORY_H
 #define APIPOOLER_TWITTERFACTORY_H
 
-#include "Pollers/PollerFactory.h"
 #include "TwitterPoller/HttpStream/TwitterHttpStreamPoller.h"
 
 namespace APIPOLLER {
     class TwitterFactory;
+    class IPollerFactory;
 }
 
-class APIPOLLER::TwitterFactory : public PollerFactory
+class APIPOLLER::TwitterFactory : public IPollerFactory
 {
 public:
     TwitterFactory() {}

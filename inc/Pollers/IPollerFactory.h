@@ -4,21 +4,21 @@
 #include "APIPoller.h"
 
 namespace APIPOLLER {
-    class PollerFactory;
+    class IPollerFactory;
     class Poller;
 }
 
-class APIPOLLER::PollerFactory
+class APIPOLLER::IPollerFactory
 {
 public:
-    virtual ~PollerFactory() {}
+    virtual ~IPollerFactory() {}
 
     inline virtual Poller* createHttpPoller() const = 0;
     inline virtual Poller* createSocketPoller() const = 0;
     inline virtual Poller* createHttpStreamPoller() const = 0;
 
 protected:
-    PollerFactory() {}
+    IPollerFactory() {}
 };
 
 #endif

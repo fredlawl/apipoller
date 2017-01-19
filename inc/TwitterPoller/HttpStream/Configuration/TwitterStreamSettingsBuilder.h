@@ -15,9 +15,9 @@ namespace APIPOLLER {
 }
 
 class APIPOLLER::TwitterStreamSettingsBuilder :
-        ISettingsBuilder<TwitterHttpStreamSettings>,
-        IHttpSettingsBuilder<TwitterStreamSettingsBuilder>,
-        ITwitterSettingsBuilder<TwitterStreamSettingsBuilder>
+        public ISettingsBuilder<TwitterHttpStreamSettings>,
+        public IHttpSettingsBuilder<TwitterStreamSettingsBuilder>,
+        public ITwitterSettingsBuilder<TwitterStreamSettingsBuilder>
 {
 public:
     TwitterStreamSettingsBuilder(Json::Value* json);

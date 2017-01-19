@@ -2,6 +2,7 @@
 #include <Signal/SignalManager.h>
 #include <Signal/CloseCURLSignalHandler.h>
 #include <Pollers/PollerFactoryCreator.h>
+#include <Pollers/Poller.h>
 #include <Loggers/STDLogger.h>
 #include <Configuration/JsonConfigurationReader.h>
 #include <Pollers/Configuration/PollerSettingsBuilder.h>
@@ -38,7 +39,7 @@ int main (int argc, char** argv)
 
     // Initiate Poller
     PollerFactoryCreator factoryCreator;
-    PollerFactory* pollerFactory = nullptr;
+    IPollerFactory* pollerFactory = nullptr;
     Poller* poller = nullptr;
 
     // Grab a poller
